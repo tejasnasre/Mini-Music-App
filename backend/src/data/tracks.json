@@ -1,0 +1,319 @@
+{
+  "tracks": [
+    {
+      "id": "alan-walker-faded",
+      "title": "Faded",
+      "slug": "faded",
+      "artists": [
+        {
+          "name": "Alan Walker",
+          "role": "Primary Artist",
+          "type": "DJ / Producer"
+        },
+        { "name": "Iselin Solheim", "role": "Vocals", "type": "Singer" }
+      ],
+      "album": "Different World",
+      "genre": ["EDM", "Electro House", "Progressive House"],
+      "language": "English",
+      "release_date": "2015-12-03",
+      "duration": 212,
+      "duration_formatted": "3:32",
+      "bpm": 90,
+      "key": "E♭ Minor",
+      "mood": ["Emotional", "Melancholic", "Energetic", "Cinematic"],
+      "cover_image": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/0d/a3/1a/0da31af7-d0ff-9bee-c427-1b6d0336f6fc/886446321981.jpg/500x500bb.jpg",
+      "audio": {
+        "stream_url": "https://losokmfhjhlfcjzoypvp.supabase.co/storage/v1/object/public/audio-db/Katy%20Perry%20-%20Dark%20Horse%20ft.%20Juicy%20J.mp3",
+        "hls_url": null,
+        "preview_url": null,
+        "format": "mp3",
+        "quality": "320kbps",
+        "size_mb": 8.4
+      },
+      "lyrics_available": false,
+      "explicit": false,
+      "copyright": {
+        "label": "Sony Music Entertainment Sweden AB",
+        "license": "All Rights Reserved"
+      },
+      "credits": {
+        "producer": ["Alan Walker", "Mood Melodies", "Jesper Borgen"],
+        "composer": [
+          "Alan Walker",
+          "Anders Frøen",
+          "Jesper Borgen",
+          "Gunnar Greve"
+        ],
+        "lyricist": ["Jesper Borgen", "Anders Frøen", "Gunnar Greve"]
+      },
+      "stats": {
+        "youtube_views": "3B+",
+        "spotify_streams": "1B+",
+        "popularity": 98
+      },
+      "tags": [
+        "viral",
+        "gaming",
+        "night-drive",
+        "nostalgia",
+        "youtube-classic",
+        "electronic"
+      ],
+      "source": {
+        "youtube_video_id": "60ItHLz5WEA",
+        "youtube_url": "https://www.youtube.com/watch?v=60ItHLz5WEA"
+      },
+      "availability": {
+        "downloadable": false,
+        "streamable": true,
+        "regions_blocked": []
+      },
+      "created_at": "2026-05-16T21:00:00Z",
+      "updated_at": "2026-05-16T21:00:00Z"
+    },
+    {
+      "id": "tees-maar-khan-wallah-re-wallah",
+      "title": "Wallah Re Wallah",
+      "slug": "wallah-re-wallah",
+      "artists": [
+        { "name": "Shekhar Ravjiani", "role": "Singer", "type": "Singer" },
+        { "name": "Kamal Khan", "role": "Singer", "type": "Singer" },
+        { "name": "Raja Hasan", "role": "Singer", "type": "Singer" },
+        { "name": "Shreya Ghoshal", "role": "Singer", "type": "Singer" }
+      ],
+      "album": "Tees Maar Khan (Original Motion Picture Soundtrack)",
+      "movie": "Tees Maar Khan",
+      "cast": ["Akshay Kumar", "Katrina Kaif", "Salman Khan"],
+      "genre": ["Bollywood", "Dance", "Item Song"],
+      "language": "Hindi",
+      "release_date": "2010-11-14",
+      "duration": 285,
+      "duration_formatted": "4:45",
+      "bpm": 128,
+      "key": "C Minor",
+      "mood": ["Energetic", "Party", "Dance", "Festive"],
+      "cover_image": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/ee/d8/c8/eed8c8a1-b596-465b-281d-c436daaebf90/8902894690041_cover.jpg/500x500bb.jpg",
+      "audio": {
+        "stream_url": "https://losokmfhjhlfcjzoypvp.supabase.co/storage/v1/object/public/audio-db/Paisa%20Paisa%20-Official%20Video%20Song%20%20De%20Dana%20Dan%20Akshay%20Kumar%20&%20Katrina%20Kaif%20%20Ishtar%20Music.mp3",
+        "hls_url": null,
+        "preview_url": null,
+        "format": "mp3",
+        "quality": "320kbps",
+        "size_mb": 11.2
+      },
+      "lyrics_available": true,
+      "explicit": false,
+      "copyright": {
+        "label": "T-Series",
+        "license": "All Rights Reserved"
+      },
+      "credits": {
+        "music_director": ["Vishal Dadlani", "Shekhar Ravjiani"],
+        "lyricist": ["Anvita Dutt"],
+        "producer": ["Twinkle Khanna", "Shirish Kunder"]
+      },
+      "stats": {
+        "youtube_views": "100M+",
+        "popularity": 86
+      },
+      "tags": [
+        "bollywood-party",
+        "dance-floor",
+        "item-song",
+        "nostalgia",
+        "2010s",
+        "wedding"
+      ],
+      "source": {
+        "youtube_video_id": "r03GO2AlNUo",
+        "youtube_url": "https://www.youtube.com/watch?v=r03GO2AlNUo"
+      },
+      "availability": {
+        "downloadable": false,
+        "streamable": true,
+        "regions_blocked": []
+      },
+      "created_at": "2026-05-16T21:00:00Z",
+      "updated_at": "2026-05-16T21:00:00Z"
+    },
+    {
+      "id": "goat-whistle-aesko",
+      "title": "Whistle Aesko",
+      "slug": "whistle-aesko",
+      "artists": [
+        { "name": "Yuvan Shankar Raja", "role": "Composer" },
+        { "name": "Nakash Aziz", "role": "Singer" },
+        { "name": "Ramajogayya Sastry", "role": "Lyricist" }
+      ],
+      "album": "The Greatest Of All Time (Original Motion Picture Soundtrack)",
+      "movie": "The Greatest Of All Time",
+      "cast": [
+        "Vijay",
+        "Prashanth",
+        "Prabhu Deva",
+        "Sneha",
+        "Meenakshi Chaudhary"
+      ],
+      "genre": ["Indian Pop", "Dance", "Tamil Cinema", "Telugu Cinema"],
+      "language": "Telugu",
+      "release_date": "2024-07-12",
+      "duration": 262,
+      "duration_formatted": "4:22",
+      "bpm": 81,
+      "key": "G Minor",
+      "mood": ["Energetic", "Mass", "Celebration", "Party"],
+      "cover_image": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/36/12/8e/36128ea3-4895-673d-ffc8-65a265d5d866/8903431018472_cover.jpg/500x500bb.jpg",
+      "audio": {
+        "stream_url": "https://losokmfhjhlfcjzoypvp.supabase.co/storage/v1/object/public/audio-db/MINDSET%20-%20KARMA%20x%20DEEP%20KALSI%20%20DRJ%20SOHAIL%20%20Official%20Music%20Video%20%202026.mp3",
+        "hls_url": null,
+        "preview_url": null,
+        "format": "mp3",
+        "quality": "320kbps",
+        "size_mb": 10.1
+      },
+      "lyrics_available": true,
+      "explicit": false,
+      "copyright": {
+        "label": "T-Series",
+        "license": "All Rights Reserved"
+      },
+      "credits": {
+        "music_director": ["Yuvan Shankar Raja"],
+        "lyricist": ["Ramajogayya Sastry"],
+        "producer": ["AGS Entertainment"]
+      },
+      "stats": {
+        "youtube_views": "50M+",
+        "popularity": 90
+      },
+      "tags": [
+        "thalapathy",
+        "mass-song",
+        "party",
+        "dance",
+        "viral",
+        "goat-movie"
+      ],
+      "source": {
+        "youtube_video_id": "ASv5Xp6U_JE",
+        "youtube_url": "https://www.youtube.com/watch?v=ASv5Xp6U_JE"
+      },
+      "availability": {
+        "downloadable": false,
+        "streamable": true,
+        "regions_blocked": []
+      },
+      "created_at": "2026-05-16T21:00:00Z",
+      "updated_at": "2026-05-16T21:00:00Z"
+    },
+    {
+      "id": "dress-over-slowed-reverb",
+      "title": "DRESS! (Over Slowed + Reverb)",
+      "slug": "dress-over-slowed-reverb",
+      "artists": [{ "name": "Eternxlkz", "role": "Artist" }],
+      "album": "Single",
+      "genre": ["Electronic", "Slowed + Reverb", "Cinematic", "Ambient"],
+      "language": "English",
+      "release_date": "2024-04-17",
+      "duration": 240,
+      "duration_formatted": "4:00",
+      "bpm": 78,
+      "key": "A Minor",
+      "mood": ["Dreamy", "Chill", "Dark", "Atmospheric"],
+      "cover_image": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/9b/fd/99/9bfd99a4-adf8-a4d4-cabd-01a0ec338a2e/199538140323.jpg/500x500bb.jpg",
+      "audio": {
+        "stream_url": "https://losokmfhjhlfcjzoypvp.supabase.co/storage/v1/object/public/audio-db/DRESS!%20(Over%20Slowed%20%20Reverb).mp3",
+        "hls_url": null,
+        "preview_url": null,
+        "format": "mp3",
+        "quality": "320kbps",
+        "size_mb": 9.4
+      },
+      "lyrics_available": false,
+      "explicit": false,
+      "copyright": {
+        "label": "Eternxlkz",
+        "license": "All Rights Reserved"
+      },
+      "credits": {
+        "music_director": ["Eternxlkz"],
+        "lyricist": ["Unknown"],
+        "producer": ["Eternxlkz"]
+      },
+      "stats": {
+        "youtube_views": "1M+",
+        "popularity": 72
+      },
+      "tags": [
+        "slowed",
+        "reverb",
+        "vibes",
+        "chill",
+        "night-drive",
+        "aesthetic"
+      ],
+      "source": {
+        "youtube_video_id": "1pOOeRCnj3w",
+        "youtube_url": "https://www.youtube.com/watch?v=1pOOeRCnj3w"
+      },
+      "availability": {
+        "downloadable": false,
+        "streamable": true,
+        "regions_blocked": []
+      },
+      "created_at": "2026-05-16T21:00:00Z",
+      "updated_at": "2026-05-16T21:00:00Z"
+    },
+    {
+      "id": "baltra-never-let-go-of-me-slowed-reverb",
+      "title": "Never Let Go Of Me (slowed + reverb)",
+      "slug": "never-let-go-of-me-slowed-reverb",
+      "artists": [{ "name": "Baltra", "role": "Artist" }],
+      "album": "Never Let Go (Of Me) - Single",
+      "genre": ["Electronic", "Slowed + Reverb", "Chill", "Ambient"],
+      "language": "English",
+      "release_date": "2024-05-16",
+      "duration": 246,
+      "duration_formatted": "4:06",
+      "bpm": 80,
+      "key": "A Minor",
+      "mood": ["Melancholic", "Dreamy", "Late Night", "Atmospheric"],
+      "cover_image": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/fe/37/be/fe37be01-70b8-d80e-4fc5-a752f6985413/634457483767_cover.jpg/500x500bb.jpg",
+      "audio": {
+        "stream_url": "https://losokmfhjhlfcjzoypvp.supabase.co/storage/v1/object/public/audio-db/Baltra%20-%20Never%20Let%20Go%20Of%20Me%20(slowed%20%20reverb).mp3",
+        "hls_url": null,
+        "preview_url": null,
+        "format": "mp3",
+        "quality": "320kbps",
+        "size_mb": 9.1
+      },
+      "lyrics_available": false,
+      "explicit": false,
+      "copyright": {
+        "label": "Unknown",
+        "license": "All Rights Reserved"
+      },
+      "credits": {
+        "music_director": ["Baltra"],
+        "lyricist": ["Unknown"],
+        "producer": ["Baltra"]
+      },
+      "stats": {
+        "youtube_views": "100K+",
+        "popularity": 64
+      },
+      "tags": ["slowed", "reverb", "chill", "night-drive", "ambient", "vibes"],
+      "source": {
+        "youtube_video_id": "ngp5NyLfRXE",
+        "youtube_url": "https://www.youtube.com/watch?v=ngp5NyLfRXE"
+      },
+      "availability": {
+        "downloadable": false,
+        "streamable": true,
+        "regions_blocked": []
+      },
+      "created_at": "2026-05-16T21:27:00Z",
+      "updated_at": "2026-05-16T21:27:00Z"
+    }
+  ]
+}
