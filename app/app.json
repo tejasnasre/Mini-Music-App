@@ -1,0 +1,91 @@
+{
+  "expo": {
+    "name": "Mini Music",
+    "slug": "mini-music",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "mini-music",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "icon": "./assets/expo.icon"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/images/android-icon-foreground.png",
+        "backgroundImage": "./assets/images/android-icon-background.png",
+        "monochromeImage": "./assets/images/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false,
+      "package": "com.tejasnasre.minimusic"
+    },
+    "web": {
+      "output": "static",
+      "favicon": "./assets/images/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#208AEF",
+          "android": {
+            "image": "./assets/images/splash-icon.png",
+            "imageWidth": 76
+          }
+        }
+      ],
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "./assets/fonts/Open_Sans/OpenSans-Regular.ttf",
+            "./assets/fonts/Open_Sans/OpenSans-Light.ttf",
+            "./assets/fonts/Open_Sans/OpenSans-Medium.ttf",
+            "./assets/fonts/Open_Sans/OpenSans-SemiBold.ttf",
+            "./assets/fonts/Open_Sans/OpenSans-Bold.ttf",
+            "./assets/fonts/Open_Sans/OpenSans-ExtraBold.ttf"
+          ],
+          "android": {
+            "fonts": [
+              {
+                "fontFamily": "Open Sans",
+                "fontDefinitions": [
+                  {
+                    "path": "./assets/fonts/Open_Sans/OpenSans-Regular.ttf",
+                    "weight": 400
+                  },
+                  {
+                    "path": "./assets/fonts/Open_Sans/OpenSans-Light.ttf",
+                    "weight": 300
+                  },
+                  {
+                    "path": "./assets/fonts/Open_Sans/OpenSans-Medium.ttf",
+                    "weight": 500
+                  },
+                  {
+                    "path": "./assets/fonts/Open_Sans/OpenSans-SemiBold.ttf",
+                    "weight": 600
+                  },
+                  {
+                    "path": "./assets/fonts/Open_Sans/OpenSans-Bold.ttf",
+                    "weight": 700
+                  },
+                  {
+                    "path": "./assets/fonts/Open_Sans/OpenSans-ExtraBold.ttf",
+                    "weight": 800
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    }
+  }
+}
