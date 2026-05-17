@@ -2,14 +2,14 @@ import { useState } from "react";
 import {
   View,
   Text,
-  TextInput,
-  TouchableOpacity,
+  Pressable,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { router } from "expo-router";
+import { Button, TextField, Input, Label, FieldError } from "heroui-native";
 import { useAuthStore } from "@/store/auth";
 
 export default function Login() {
@@ -62,17 +62,14 @@ export default function Login() {
           keyboardShouldPersistTaps="handled"
           showsVerticalScrollIndicator={false}
         >
-          {/* ── Back — pt-safe so it sits below the status bar ── */}
-          <TouchableOpacity
+          <Pressable
             onPress={() => router.back()}
             className="px-6 pt-safe-offset-2 pb-2"
-            hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
           >
-            <Text className="text-accent text-base font-semibold">← Back</Text>
-          </TouchableOpacity>
+            <Text className="text-accent text-base font-semibold">Back</Text>
+          </Pressable>
 
           <View className="flex-1 px-6 justify-center py-6">
-            {/* ── Logo ───────────────────────────────────── */}
             <View className="items-center mb-10">
               <View className="w-20 h-20 rounded-full bg-accent items-center justify-center mb-5">
                 <Text style={{ fontSize: 38 }}>🎵</Text>
@@ -85,106 +82,73 @@ export default function Login() {
               </Text>
             </View>
 
-            {/* ── Form ───────────────────────────────────── */}
             <View className="gap-4">
-              {/* Email */}
-              <View className="bg-field-background rounded-2xl px-4 pt-3 pb-3">
-                <Text
-                  className="text-muted text-xs mb-1 font-semibold"
-                  style={{ letterSpacing: 1 }}
-                >
-                  EMAIL
-                </Text>
-                <TextInput
+              <TextField isRequired isInvalid={!!error}>
+                <Label>Email</Label>
+                <Input
+                  placeholder="you@example.com"
+                  keyboardType="email-address"
+                  autoCapitalize="none"
+                  autoCorrect={false}
                   value={email}
                   onChangeText={(t) => {
                     setEmail(t);
                     clearError();
                   }}
-                  placeholder="you@example.com"
-                  placeholderTextColor="#6B7280"
-                  keyboardType="email-address"
-                  autoCapitalize="none"
-                  autoCorrect={false}
-                  className="text-field-foreground text-base font-regular"
                 />
-              </View>
+              </TextField>
 
-              {/* Password */}
-              <View className="bg-field-background rounded-2xl px-4 pt-3 pb-3">
-                <Text
-                  className="text-muted text-xs mb-1 font-semibold"
-                  style={{ letterSpacing: 1 }}
-                >
-                  PASSWORD
-                </Text>
-                <View className="flex-row items-center">
-                  <TextInput
+              <TextField isRequired isInvalid={!!error}>
+                <Label>Password</Label>
+                <View className="w-full flex-row items-center">
+                  <Input
+                    className="flex-1"
+                    placeholder="Enter password"
+                    secureTextEntry={!showPassword}
+                    autoCapitalize="none"
+                    autoCorrect={false}
                     value={password}
                     onChangeText={(t) => {
                       setPassword(t);
                       clearError();
                     }}
-                    placeholder="Enter password"
-                    placeholderTextColor="#6B7280"
-                    secureTextEntry={!showPassword}
-                    autoCapitalize="none"
-                    autoCorrect={false}
-                    className="flex-1 text-field-foreground text-base font-regular"
                   />
-                  <TouchableOpacity
+                  <Pressable
+                    className="absolute right-4"
                     onPress={() => setShowPassword((p) => !p)}
                     hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
                   >
                     <Text style={{ fontSize: 18 }}>
                       {showPassword ? "🙈" : "👁️"}
                     </Text>
-                  </TouchableOpacity>
+                  </Pressable>
                 </View>
-              </View>
+                {error ? <FieldError>{error}</FieldError> : null}
+              </TextField>
 
-              {/* Error */}
-              {error ? (
-                <View className="bg-field-background rounded-xl px-4 py-3 border border-danger">
-                  <Text className="text-danger text-sm font-medium">
-                    ⚠️ {error}
-                  </Text>
-                </View>
-              ) : null}
-
-              {/* Sign In */}
-              <TouchableOpacity
+              <Button
+                size="lg"
+                variant="primary"
                 onPress={handleLogin}
-                disabled={loading}
-                activeOpacity={0.85}
-                className="bg-accent rounded-2xl py-4 items-center mt-2"
-                style={{ opacity: loading ? 0.7 : 1 }}
+                isDisabled={loading}
+                className="mt-2"
               >
-                <Text className="text-accent-foreground text-base font-bold">
+                <Button.Label>
                   {loading ? "Signing in…" : "Sign In"}
-                </Text>
-              </TouchableOpacity>
+                </Button.Label>
+              </Button>
             </View>
 
-            {/* ── Test credentials — pb-safe-offset-6 clears home indicator ── */}
-            <TouchableOpacity
+            <Button
+              variant="outline"
               onPress={fillTestCredentials}
-              activeOpacity={0.7}
-              className="mt-8 mb-safe-offset-6 bg-field-background rounded-2xl px-5 py-4 border border-border"
+              className="mt-8 mb-safe-offset-6"
             >
-              <Text
-                className="text-muted text-xs text-center mb-2 font-semibold"
-                style={{ letterSpacing: 1 }}
-              >
-                🧪 TEST CREDENTIALS — tap to fill
-              </Text>
-              <Text className="text-foreground text-sm text-center font-medium">
+              <Button.Label className="text-muted text-xs text-center">
+                Test Credentials - Tap to fill{"\n"}
                 {process.env.EXPO_PUBLIC_TEST_EMAIL}
-              </Text>
-              <Text className="text-muted text-xs text-center mt-1 font-regular">
-                {process.env.EXPO_PUBLIC_TEST_PASSWORD}
-              </Text>
-            </TouchableOpacity>
+              </Button.Label>
+            </Button>
           </View>
         </ScrollView>
       </KeyboardAvoidingView>
