@@ -10,17 +10,30 @@
           "role": "Primary Artist",
           "type": "DJ / Producer"
         },
-        { "name": "Iselin Solheim", "role": "Vocals", "type": "Singer" }
+        {
+          "name": "Iselin Solheim",
+          "role": "Vocals",
+          "type": "Singer"
+        }
       ],
       "album": "Different World",
-      "genre": ["EDM", "Electro House", "Progressive House"],
+      "genre": [
+        "EDM",
+        "Electro House",
+        "Progressive House"
+      ],
       "language": "English",
       "release_date": "2015-12-03",
       "duration": 212,
       "duration_formatted": "3:32",
       "bpm": 90,
-      "key": "E♭ Minor",
-      "mood": ["Emotional", "Melancholic", "Energetic", "Cinematic"],
+      "key": "E\u266d Minor",
+      "mood": [
+        "Emotional",
+        "Melancholic",
+        "Energetic",
+        "Cinematic"
+      ],
       "cover_image": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/0d/a3/1a/0da31af7-d0ff-9bee-c427-1b6d0336f6fc/886446321981.jpg/500x500bb.jpg",
       "audio": {
         "stream_url": "https://losokmfhjhlfcjzoypvp.supabase.co/storage/v1/object/public/audio-db/Katy%20Perry%20-%20Dark%20Horse%20ft.%20Juicy%20J.mp3",
@@ -37,14 +50,22 @@
         "license": "All Rights Reserved"
       },
       "credits": {
-        "producer": ["Alan Walker", "Mood Melodies", "Jesper Borgen"],
+        "producer": [
+          "Alan Walker",
+          "Mood Melodies",
+          "Jesper Borgen"
+        ],
         "composer": [
           "Alan Walker",
-          "Anders Frøen",
+          "Anders Fr\u00f8en",
           "Jesper Borgen",
           "Gunnar Greve"
         ],
-        "lyricist": ["Jesper Borgen", "Anders Frøen", "Gunnar Greve"]
+        "lyricist": [
+          "Jesper Borgen",
+          "Anders Fr\u00f8en",
+          "Gunnar Greve"
+        ]
       },
       "stats": {
         "youtube_views": "3B+",
@@ -72,26 +93,51 @@
       "updated_at": "2026-05-16T21:00:00Z"
     },
     {
-      "id": "tees-maar-khan-wallah-re-wallah",
-      "title": "Wallah Re Wallah",
-      "slug": "wallah-re-wallah",
+      "id": "de-dana-dan-paisa-paisa",
+      "title": "Paisa Paisa",
+      "slug": "paisa-paisa",
       "artists": [
-        { "name": "Shekhar Ravjiani", "role": "Singer", "type": "Singer" },
-        { "name": "Kamal Khan", "role": "Singer", "type": "Singer" },
-        { "name": "Raja Hasan", "role": "Singer", "type": "Singer" },
-        { "name": "Shreya Ghoshal", "role": "Singer", "type": "Singer" }
+        {
+          "name": "Manak-E",
+          "role": "Singer",
+          "type": "Singer"
+        },
+        {
+          "name": "RDB",
+          "role": "Composer / Singer",
+          "type": "Group"
+        },
+        {
+          "name": "Selina",
+          "role": "Singer",
+          "type": "Singer"
+        }
       ],
-      "album": "Tees Maar Khan (Original Motion Picture Soundtrack)",
-      "movie": "Tees Maar Khan",
-      "cast": ["Akshay Kumar", "Katrina Kaif", "Salman Khan"],
-      "genre": ["Bollywood", "Dance", "Item Song"],
+      "album": "De Dana Dan (Original Motion Picture Soundtrack)",
+      "movie": "De Dana Dan",
+      "cast": [
+        "Akshay Kumar",
+        "Katrina Kaif",
+        "Suniel Shetty",
+        "Sameera Reddy"
+      ],
+      "genre": [
+        "Bollywood",
+        "Dance",
+        "Punjabi Folk Fusion"
+      ],
       "language": "Hindi",
-      "release_date": "2010-11-14",
-      "duration": 285,
-      "duration_formatted": "4:45",
+      "release_date": "2009-11-02",
+      "duration": 234,
+      "duration_formatted": "3:54",
       "bpm": 128,
       "key": "C Minor",
-      "mood": ["Energetic", "Party", "Dance", "Festive"],
+      "mood": [
+        "Energetic",
+        "Party",
+        "Dance",
+        "Festive"
+      ],
       "cover_image": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/ee/d8/c8/eed8c8a1-b596-465b-281d-c436daaebf90/8902894690041_cover.jpg/500x500bb.jpg",
       "audio": {
         "stream_url": "https://losokmfhjhlfcjzoypvp.supabase.co/storage/v1/object/public/audio-db/Paisa%20Paisa%20-Official%20Video%20Song%20%20De%20Dana%20Dan%20Akshay%20Kumar%20&%20Katrina%20Kaif%20%20Ishtar%20Music.mp3",
@@ -104,24 +150,33 @@
       "lyrics_available": true,
       "explicit": false,
       "copyright": {
-        "label": "T-Series",
+        "label": "Ishtar Music Pvt. Ltd.",
         "license": "All Rights Reserved"
       },
       "credits": {
-        "music_director": ["Vishal Dadlani", "Shekhar Ravjiani"],
-        "lyricist": ["Anvita Dutt"],
-        "producer": ["Twinkle Khanna", "Shirish Kunder"]
+        "music_director": [
+          "RDB"
+        ],
+        "lyricist": [
+          "Manak-E",
+          "RDB",
+          "Selina"
+        ],
+        "producer": [
+          "Girish Jain",
+          "Ganesh Jain"
+        ]
       },
       "stats": {
-        "youtube_views": "100M+",
+        "youtube_views": "120M+",
         "popularity": 86
       },
       "tags": [
         "bollywood-party",
         "dance-floor",
-        "item-song",
+        "punjabi-fusion",
         "nostalgia",
-        "2010s",
+        "2009",
         "wedding"
       ],
       "source": {
@@ -137,31 +192,40 @@
       "updated_at": "2026-05-16T21:00:00Z"
     },
     {
-      "id": "goat-whistle-aesko",
-      "title": "Whistle Aesko",
-      "slug": "whistle-aesko",
+      "id": "6-pe-6-mindset",
+      "title": "Mindset",
+      "slug": "mindset",
       "artists": [
-        { "name": "Yuvan Shankar Raja", "role": "Composer" },
-        { "name": "Nakash Aziz", "role": "Singer" },
-        { "name": "Ramajogayya Sastry", "role": "Lyricist" }
+        {
+          "name": "Karma",
+          "role": "Singer / Lyricist / Composer"
+        },
+        {
+          "name": "Deep Kalsi",
+          "role": "Singer / Lyricist / Composer"
+        },
+        {
+          "name": "DRJ Sohail",
+          "role": "Singer"
+        }
       ],
-      "album": "The Greatest Of All Time (Original Motion Picture Soundtrack)",
-      "movie": "The Greatest Of All Time",
-      "cast": [
-        "Vijay",
-        "Prashanth",
-        "Prabhu Deva",
-        "Sneha",
-        "Meenakshi Chaudhary"
+      "album": "6 pe 6 - EP",
+      "genre": [
+        "Hip-Hop/Rap",
+        "Desi Hip Hop"
       ],
-      "genre": ["Indian Pop", "Dance", "Tamil Cinema", "Telugu Cinema"],
-      "language": "Telugu",
-      "release_date": "2024-07-12",
-      "duration": 262,
-      "duration_formatted": "4:22",
-      "bpm": 81,
+      "language": "Punjabi",
+      "release_date": "2025-12-05",
+      "duration": 173,
+      "duration_formatted": "2:53",
+      "bpm": 115,
       "key": "G Minor",
-      "mood": ["Energetic", "Mass", "Celebration", "Party"],
+      "mood": [
+        "Energetic",
+        "Mass",
+        "Celebration",
+        "Party"
+      ],
       "cover_image": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/36/12/8e/36128ea3-4895-673d-ffc8-65a265d5d866/8903431018472_cover.jpg/500x500bb.jpg",
       "audio": {
         "stream_url": "https://losokmfhjhlfcjzoypvp.supabase.co/storage/v1/object/public/audio-db/MINDSET%20-%20KARMA%20x%20DEEP%20KALSI%20%20DRJ%20SOHAIL%20%20Official%20Music%20Video%20%202026.mp3",
@@ -174,25 +238,39 @@
       "lyrics_available": true,
       "explicit": false,
       "copyright": {
-        "label": "T-Series",
+        "label": "Warner Music India",
         "license": "All Rights Reserved"
       },
       "credits": {
-        "music_director": ["Yuvan Shankar Raja"],
-        "lyricist": ["Ramajogayya Sastry"],
-        "producer": ["AGS Entertainment"]
+        "music_director": [
+          "Karma",
+          "Deep Kalsi"
+        ],
+        "lyricist": [
+          "Karma",
+          "Deep Kalsi"
+        ],
+        "producer": [
+          "DRJ Sohail"
+        ],
+        "mix_engineer": [
+          "Deep Kalsi"
+        ],
+        "mastering_engineer": [
+          "Akash Shravan"
+        ]
       },
       "stats": {
-        "youtube_views": "50M+",
+        "youtube_views": "1M+",
         "popularity": 90
       },
       "tags": [
-        "thalapathy",
-        "mass-song",
-        "party",
-        "dance",
-        "viral",
-        "goat-movie"
+        "desi-hip-hop",
+        "rap",
+        "karma",
+        "deep-kalsi",
+        "drj-sohail",
+        "warner-music"
       ],
       "source": {
         "youtube_video_id": "ASv5Xp6U_JE",
@@ -210,16 +288,31 @@
       "id": "dress-over-slowed-reverb",
       "title": "DRESS! (Over Slowed + Reverb)",
       "slug": "dress-over-slowed-reverb",
-      "artists": [{ "name": "Eternxlkz", "role": "Artist" }],
+      "artists": [
+        {
+          "name": "Eternxlkz",
+          "role": "Artist"
+        }
+      ],
       "album": "Single",
-      "genre": ["Electronic", "Slowed + Reverb", "Cinematic", "Ambient"],
+      "genre": [
+        "Electronic",
+        "Slowed + Reverb",
+        "Cinematic",
+        "Ambient"
+      ],
       "language": "English",
       "release_date": "2024-04-17",
       "duration": 240,
       "duration_formatted": "4:00",
       "bpm": 78,
       "key": "A Minor",
-      "mood": ["Dreamy", "Chill", "Dark", "Atmospheric"],
+      "mood": [
+        "Dreamy",
+        "Chill",
+        "Dark",
+        "Atmospheric"
+      ],
       "cover_image": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/9b/fd/99/9bfd99a4-adf8-a4d4-cabd-01a0ec338a2e/199538140323.jpg/500x500bb.jpg",
       "audio": {
         "stream_url": "https://losokmfhjhlfcjzoypvp.supabase.co/storage/v1/object/public/audio-db/DRESS!%20(Over%20Slowed%20%20Reverb).mp3",
@@ -236,12 +329,18 @@
         "license": "All Rights Reserved"
       },
       "credits": {
-        "music_director": ["Eternxlkz"],
-        "lyricist": ["Unknown"],
-        "producer": ["Eternxlkz"]
+        "music_director": [
+          "Eternxlkz"
+        ],
+        "lyricist": [
+          "Unknown"
+        ],
+        "producer": [
+          "Eternxlkz"
+        ]
       },
       "stats": {
-        "youtube_views": "1M+",
+        "youtube_views": "28M+",
         "popularity": 72
       },
       "tags": [
@@ -268,16 +367,31 @@
       "id": "baltra-never-let-go-of-me-slowed-reverb",
       "title": "Never Let Go Of Me (slowed + reverb)",
       "slug": "never-let-go-of-me-slowed-reverb",
-      "artists": [{ "name": "Baltra", "role": "Artist" }],
+      "artists": [
+        {
+          "name": "Baltra",
+          "role": "Artist"
+        }
+      ],
       "album": "Never Let Go (Of Me) - Single",
-      "genre": ["Electronic", "Slowed + Reverb", "Chill", "Ambient"],
+      "genre": [
+        "Electronic",
+        "Slowed + Reverb",
+        "Chill",
+        "Ambient"
+      ],
       "language": "English",
       "release_date": "2024-05-16",
       "duration": 246,
       "duration_formatted": "4:06",
       "bpm": 80,
       "key": "A Minor",
-      "mood": ["Melancholic", "Dreamy", "Late Night", "Atmospheric"],
+      "mood": [
+        "Melancholic",
+        "Dreamy",
+        "Late Night",
+        "Atmospheric"
+      ],
       "cover_image": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/fe/37/be/fe37be01-70b8-d80e-4fc5-a752f6985413/634457483767_cover.jpg/500x500bb.jpg",
       "audio": {
         "stream_url": "https://losokmfhjhlfcjzoypvp.supabase.co/storage/v1/object/public/audio-db/Baltra%20-%20Never%20Let%20Go%20Of%20Me%20(slowed%20%20reverb).mp3",
@@ -294,15 +408,28 @@
         "license": "All Rights Reserved"
       },
       "credits": {
-        "music_director": ["Baltra"],
-        "lyricist": ["Unknown"],
-        "producer": ["Baltra"]
+        "music_director": [
+          "Baltra"
+        ],
+        "lyricist": [
+          "Unknown"
+        ],
+        "producer": [
+          "Baltra"
+        ]
       },
       "stats": {
         "youtube_views": "100K+",
         "popularity": 64
       },
-      "tags": ["slowed", "reverb", "chill", "night-drive", "ambient", "vibes"],
+      "tags": [
+        "slowed",
+        "reverb",
+        "chill",
+        "night-drive",
+        "ambient",
+        "vibes"
+      ],
       "source": {
         "youtube_video_id": "ngp5NyLfRXE",
         "youtube_url": "https://www.youtube.com/watch?v=ngp5NyLfRXE"

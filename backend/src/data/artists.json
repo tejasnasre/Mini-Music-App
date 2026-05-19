@@ -1,0 +1,293 @@
+{
+  "artists": [
+    {
+      "id": "alan-walker",
+      "name": "Alan Walker",
+      "slug": "alan-walker",
+      "type": "DJ / Producer",
+      "country": "Norway",
+      "genres": ["EDM", "Electro House", "Progressive House"],
+      "bio": "Alan Walker is a Norwegian DJ and producer known for cinematic electronic music and global hits like Faded.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Alan_Walker_-_2018_%28cropped%29.jpg/500px-Alan_Walker_-_2018_%28cropped%29.jpg?_=20250821131646",
+      "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Alan_Walker_-_2018_%28cropped%29.jpg/500px-Alan_Walker_-_2018_%28cropped%29.jpg?_=20250821131646",
+      "verified": true,
+      "socials": {
+        "youtube": "https://www.youtube.com/@Alanwalkermusic",
+        "spotify": "https://open.spotify.com/artist/7vk5CKwDwp4Cg676nnK6Zg",
+        "instagram": "https://www.instagram.com/alanwalkermusic"
+      }
+    },
+    {
+      "id": "iselin-solheim",
+      "name": "Iselin Solheim",
+      "slug": "iselin-solheim",
+      "type": "Singer",
+      "country": "Norway",
+      "genres": ["Pop", "Electronic"],
+      "bio": "Iselin Solheim is a Norwegian singer and vocalist featured on Alan Walker's Faded.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Iselin_performing_in_2019.jpg/250px-Iselin_performing_in_2019.jpg",
+      "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Iselin_performing_in_2019.jpg/250px-Iselin_performing_in_2019.jpg",
+      "verified": true,
+      "socials": {
+        "youtube": "https://www.youtube.com/channel/UCBQl5Gr9tcB4BXNgSPZFIrg",
+        "spotify": "https://open.spotify.com/artist/2S9Vp599pIasv7g99X966z",
+        "instagram": "https://www.instagram.com/iselinsolheim"
+      }
+    },
+    {
+      "id": "shekhar-ravjiani",
+      "name": "Shekhar Ravjiani",
+      "slug": "shekhar-ravjiani",
+      "type": "Singer / Composer",
+      "country": "India",
+      "genres": ["Bollywood", "Hindi", "Film"],
+      "bio": "Shekhar Ravjiani is an Indian singer and composer known for Bollywood film music.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Shekhar_Ravjiani_at_the_special_screening_of_%E2%80%98Neerja%E2%80%99_at_Light_Box.jpg/250px-Shekhar_Ravjiani_at_the_special_screening_of_%E2%80%98Neerja%E2%80%99_at_Light_Box.jpg",
+      "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Shekhar_Ravjiani_at_the_special_screening_of_%E2%80%98Neerja%E2%80%99_at_Light_Box.jpg/250px-Shekhar_Ravjiani_at_the_special_screening_of_%E2%80%98Neerja%E2%80%99_at_Light_Box.jpg",
+      "verified": true,
+      "socials": {
+        "youtube": "https://www.youtube.com/@ShekharRavjianiOfficial",
+        "spotify": "https://open.spotify.com/artist/096p7A69idp9mX0id88YV6",
+        "instagram": "https://www.instagram.com/shekharravjiani"
+      }
+    },
+    {
+      "id": "kamal-khan",
+      "name": "Kamal Khan",
+      "slug": "kamal-khan",
+      "type": "Singer",
+      "country": "India",
+      "genres": ["Bollywood", "Hindi", "Film"],
+      "bio": "Kamal Khan is an Indian playback singer known for energetic Bollywood songs.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Kamal_Khan_at_Zee_Cinema_FilmFare_Awards.jpg/250px-Kamal_Khan_at_Zee_Cinema_FilmFare_Awards.jpg",
+      "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Kamal_Khan_at_Zee_Cinema_FilmFare_Awards.jpg/250px-Kamal_Khan_at_Zee_Cinema_FilmFare_Awards.jpg",
+      "verified": true,
+      "socials": {
+        "youtube": "https://www.youtube.com/@KamalKhanOfficial",
+        "spotify": "https://open.spotify.com/artist/1GsnOskx7vG9E6bHqLpC3P",
+        "instagram": "https://www.instagram.com/kamalkhanmusic"
+      }
+    },
+    {
+      "id": "raja-hasan",
+      "name": "Raja Hasan",
+      "slug": "raja-hasan",
+      "type": "Singer",
+      "country": "India",
+      "genres": ["Bollywood", "Hindi", "Film"],
+      "bio": "Raja Hasan is an Indian playback singer associated with Bollywood and film music.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Raja_Hasan_1.jpg/250px-Raja_Hasan_1.jpg",
+      "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Raja_Hasan_1.jpg/250px-Raja_Hasan_1.jpg",
+      "verified": true,
+      "socials": {
+        "youtube": "https://www.youtube.com/@RajaHasanOfficial",
+        "spotify": "https://open.spotify.com/artist/3gXshzDAnD3KofYgW0wbyr",
+        "instagram": "https://www.instagram.com/rajahasanic"
+      }
+    },
+    {
+      "id": "shreya-ghoshal",
+      "name": "Shreya Ghoshal",
+      "slug": "shreya-ghoshal",
+      "type": "Singer",
+      "country": "India",
+      "genres": ["Bollywood", "Hindi", "Film", "Classical"],
+      "bio": "Shreya Ghoshal is an Indian playback singer known for versatile vocals across Indian film music.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Shreya_Ghoshal_in_Toronto.jpg/960px-Shreya_Ghoshal_in_Toronto.jpg",
+      "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Shreya_Ghoshal_in_Toronto.jpg/960px-Shreya_Ghoshal_in_Toronto.jpg",
+      "verified": true,
+      "socials": {
+        "youtube": "https://www.youtube.com/@ShreyaGhoshalOfficial",
+        "spotify": "https://open.spotify.com/artist/0oOetvZYUg7bHwqiOtHGJb",
+        "instagram": "https://www.instagram.com/shreyaghoshal"
+      }
+    },
+    {
+      "id": "nakash-aziz",
+      "name": "Nakash Aziz",
+      "slug": "nakash-aziz",
+      "type": "Singer",
+      "country": "India",
+      "genres": ["Bollywood", "Hindi", "Film"],
+      "bio": "Nakash Aziz is an Indian singer known for high-energy Bollywood playback songs.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Nakash_Aziz.jpg/250px-Nakash_Aziz.jpg",
+      "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Nakash_Aziz.jpg/250px-Nakash_Aziz.jpg",
+      "verified": true,
+      "socials": {
+        "youtube": "https://www.youtube.com/@NakashAzizOfficial",
+        "spotify": "https://open.spotify.com/artist/4YRx3IIjS65wYpYAsI566l",
+        "instagram": "https://www.instagram.com/nakash_aziz"
+      }
+    },
+    {
+      "id": "baltra",
+      "name": "Baltra",
+      "slug": "baltra",
+      "type": "Producer",
+      "country": "United States",
+      "genres": ["House", "Electronic", "Lo-fi"],
+      "bio": "Baltra is an electronic music producer known for warm house textures and underground club sounds.",
+      "image": "https://yt3.ggpht.com/ytc/AIdro_eD4c3b2a1z0y9x8w7v6u5t4r3e2w=s500-c-k-c0x00ffffff-no-rj",
+      "cover_image": "https://yt3.ggpht.com/ytc/AIdro_eD4c3b2a1z0y9x8w7v6u5t4r3e2w=s500-c-k-c0x00ffffff-no-rj",
+      "verified": false,
+      "socials": {
+        "youtube": "https://www.youtube.com/@baltramusic",
+        "spotify": "https://open.spotify.com/artist/5CgO9k8XnkiFjCHGZg9f00",
+        "instagram": "https://www.instagram.com/baltramusic"
+      }
+    },
+    {
+      "id": "eternxlkz",
+      "name": "Eternxlkz",
+      "slug": "eternxlkz",
+      "type": "Producer",
+      "country": "Kazakhstan",
+      "genres": ["Phonk", "Electronic", "Krushfunk", "Brazilian Funk"],
+      "bio": "Eternxlkz is an electronic producer from Kazakhstan associated with high-energy internet culture, phonk, and highly viral atmospheric ambient tracks.",
+      "image": "https://yt3.ggpht.com/ytc/AIdro_cC2b1a0z9y8x7w6v5u4t3r2e1w0q=s500-c-k-c0x00ffffff-no-rj",
+      "cover_image": "https://yt3.ggpht.com/ytc/AIdro_cC2b1a0z9y8x7w6v5u4t3r2e1w0q=s500-c-k-c0x00ffffff-no-rj",
+      "verified": true,
+      "socials": {
+        "youtube": "https://www.youtube.com/@eternxlkz",
+        "spotify": "https://open.spotify.com/artist/5vA7MAnb08wIitwA1YtS8S",
+        "instagram": "https://www.instagram.com/eternxlkz"
+      }
+    },
+    {
+      "id": "yuvan-shankar-raja",
+      "name": "Yuvan Shankar Raja",
+      "slug": "yuvan-shankar-raja",
+      "type": "Composer / Singer",
+      "country": "India",
+      "genres": ["Tamil", "Film", "Indian Pop"],
+      "bio": "Yuvan Shankar Raja is an Indian composer and singer known for Tamil film music.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Yuvan_Shankar_Raja_at_Concert_%28cropped%29.jpg/250px-Yuvan_Shankar_Raja_at_Concert_%28cropped%29.jpg?utm_campaign=parser&utm_content=thumbnail&utm_source=en.wikipedia.org",
+      "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Yuvan_Shankar_Raja_at_Concert_%28cropped%29.jpg/250px-Yuvan_Shankar_Raja_at_Concert_%28cropped%29.jpg?utm_campaign=parser&utm_content=thumbnail&utm_source=en.wikipedia.org",
+      "verified": true,
+      "socials": {
+        "youtube": "https://www.youtube.com/@YuvanShankarRajaOfficial",
+        "spotify": "https://open.spotify.com/artist/6enALg4B8699G96m6997nb",
+        "instagram": "https://www.instagram.com/itsyuvan"
+      }
+    },
+    {
+      "id": "ramajogayya-sastry",
+      "name": "Ramajogayya Sastry",
+      "slug": "ramajogayya-sastry",
+      "type": "Lyricist",
+      "country": "India",
+      "genres": ["Telugu", "Film"],
+      "bio": "Ramajogayya Sastry is an Indian lyricist known for Telugu film songs.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Ramajogayya_Sastry.jpg/250px-Ramajogayya_Sastry.jpg",
+      "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Ramajogayya_Sastry.jpg/250px-Ramajogayya_Sastry.jpg",
+      "verified": true,
+      "socials": {
+        "youtube": "https://www.youtube.com/@RamajogayyaSastryOfficial",
+        "spotify": "https://open.spotify.com/artist/4N4wYv9nZ2Y8L89H65K19n",
+        "instagram": "https://www.instagram.com/ramajogayyasastry"
+      }
+    },
+    {
+      "id": "manak-e",
+      "name": "Manak-E",
+      "slug": "manak-e",
+      "type": "Singer / Producer",
+      "country": "India",
+      "genres": ["Punjabi Folk", "Bhangra", "Indian Pop"],
+      "bio": "Manak-E is an Indian-born Punjabi singer, songwriter, and producer known for fusing traditional Punjabi folk beats with modern musical styles.",
+      "image": "https://yt3.ggpht.com/ytc/AIdro_y8x7w6v5u4t3r2e1w0q9p8o7i6u5y=s500-c-k-c0x00ffffff-no-rj",
+      "cover_image": "https://yt3.ggpht.com/ytc/AIdro_y8x7w6v5u4t3r2e1w0q9p8o7i6u5y=s500-c-k-c0x00ffffff-no-rj",
+      "verified": true,
+      "socials": {
+        "youtube": "https://www.youtube.com/@ManakEOfficial",
+        "spotify": "https://open.spotify.com/artist/1b7V5Yv9K19W8mKz2n47nM",
+        "instagram": "https://www.instagram.com/manak_e"
+      }
+    },
+    {
+      "id": "rdb",
+      "name": "RDB",
+      "slug": "rdb",
+      "type": "Band / Producer",
+      "country": "United Kingdom",
+      "genres": ["Bhangra", "Bollywood", "Hip Hop", "Garage"],
+      "bio": "RDB (Rhythm, Dhol, Bass) was a British-Indian Punjabi DJ and music production group formed by three brothers, blending Western genres with traditional Punjabi beats.",
+      "image": "https://yt3.ggpht.com/ytc/AIdro_x7w6v5u4t3r2e1w0q9p8o7i6u5y4t=s500-c-k-c0x00ffffff-no-rj",
+      "cover_image": "https://yt3.ggpht.com/ytc/AIdro_x7w6v5u4t3r2e1w0q9p8o7i6u5y4t=s500-c-k-c0x00ffffff-no-rj",
+      "verified": true,
+      "socials": {
+        "youtube": "https://www.youtube.com/@RDBOfficial",
+        "spotify": "https://open.spotify.com/artist/6P26L4C2R2nE6A9Kk24YmB",
+        "instagram": "https://www.instagram.com/rdb_music"
+      }
+    },
+    {
+      "id": "selina",
+      "name": "Selina",
+      "slug": "selina",
+      "type": "Singer",
+      "country": "United Kingdom",
+      "genres": ["Punjabi", "Bollywood"],
+      "bio": "Selina is a British-Asian singer known for her collaborations with RDB and Manak-E, notably featured on the Bollywood chartbuster Paisa Paisa.",
+      "image": "https://yt3.ggpht.com/ytc/AIdro_w6v5u4t3r2e1w0q9p8o7i6u5y4t3r=s500-c-k-c0x00ffffff-no-rj",
+      "cover_image": "https://yt3.ggpht.com/ytc/AIdro_w6v5u4t3r2e1w0q9p8o7i6u5y4t3r=s500-c-k-c0x00ffffff-no-rj",
+      "verified": true,
+      "socials": {
+        "youtube": "https://www.youtube.com/@SelinaOfficial",
+        "spotify": "https://open.spotify.com/artist/1c4Y5V9K19W8mKz2n47nM",
+        "instagram": "https://www.instagram.com/selina_singh"
+      }
+    },
+    {
+      "id": "karma",
+      "name": "Karma",
+      "slug": "karma",
+      "type": "Rapper / Lyricist",
+      "country": "India",
+      "genres": ["Desi Hip Hop", "Rap"],
+      "bio": "Vivek Arora, professionally known as Karma, is an Indian rapper and lyricist from Dehradun signed to Warner Music India, recognized for his storytelling and versatile flow.",
+      "image": "https://yt3.ggpht.com/ytc/AIdro_v5u4t3r2e1w0q9p8o7i6u5y4t3r2e=s500-c-k-c0x00ffffff-no-rj",
+      "cover_image": "https://yt3.ggpht.com/ytc/AIdro_v5u4t3r2e1w0q9p8o7i6u5y4t3r2e=s500-c-k-c0x00ffffff-no-rj",
+      "verified": true,
+      "socials": {
+        "youtube": "https://www.youtube.com/@Karma_Dehradun",
+        "spotify": "https://open.spotify.com/artist/1uY63hYVp9w4G7Z9f7Z7bZ",
+        "instagram": "https://www.instagram.com/karma_dehradun"
+      }
+    },
+    {
+      "id": "deep-kalsi",
+      "name": "Deep Kalsi",
+      "slug": "deep-kalsi",
+      "type": "Singer / Producer / Lyricist",
+      "country": "India",
+      "genres": ["Desi Hip Hop", "Punjabi", "Rap"],
+      "bio": "Deep Kalsi is an Indian singer, music producer, and songwriter known for his unique blend of traditional Indian melodies and modern hip-hop sounds.",
+      "image": "https://starsunfolded.com/wp-content/uploads/2018/12/Deep-Kalsi-Picture.jpg",
+      "cover_image": "https://starsunfolded.com/wp-content/uploads/2018/12/Deep-Kalsi-Picture.jpg",
+      "verified": true,
+      "socials": {
+        "youtube": "https://www.youtube.com/@DeepKalsiOfficial",
+        "spotify": "https://open.spotify.com/artist/6P27L4C2R2nE6A9Kk24YmB",
+        "instagram": "https://www.instagram.com/deepkalsimusic"
+      }
+    },
+    {
+      "id": "drj-sohail",
+      "name": "DRJ Sohail",
+      "slug": "drj-sohail",
+      "type": "Producer / DJ",
+      "country": "India",
+      "genres": ["Desi Hip Hop", "Rap", "Trap"],
+      "bio": "Sohail Shaikh, known professionally as DRJ Sohail, is a music producer and DJ from Mumbai, India, who has produced tracks for prominent hip-hop artists.",
+      "image": "https://yt3.ggpht.com/ytc/AIdro_t3r2e1w0q9p8o7i6u5y4t3r2e1w0q=s500-c-k-c0x00ffffff-no-rj",
+      "cover_image": "https://yt3.ggpht.com/ytc/AIdro_t3r2e1w0q9p8o7i6u5y4t3r2e1w0q=s500-c-k-c0x00ffffff-no-rj",
+      "verified": true,
+      "socials": {
+        "youtube": "https://www.youtube.com/@DRJSohail",
+        "spotify": "https://open.spotify.com/artist/7P28L4C2R2nE6A9Kk24YmB",
+        "instagram": "https://www.instagram.com/drjsohail"
+      }
+    }
+  ]
+}

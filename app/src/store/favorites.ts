@@ -37,6 +37,9 @@ export const useFavoritesStore = create<FavoritesState>()(
     {
       name: "favorites-storage",
       storage: createJSONStorage(() => mmkvStorage),
+      // Only persist the tracks data, not functions
+      partialize: (state) => ({ tracks: state.tracks }),
+      version: 1,
     },
   ),
 );

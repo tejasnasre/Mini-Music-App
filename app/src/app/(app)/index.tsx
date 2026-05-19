@@ -3,6 +3,7 @@ import {
   Text,
   ScrollView,
   Pressable,
+  TouchableOpacity,
   RefreshControl,
 } from "react-native";
 import { Image } from "expo-image";
@@ -14,6 +15,7 @@ import { useActiveMediaItem, useIsPlaying } from "@rntp/player";
 import { useAuthStore } from "../../store/auth";
 import { useFavoritesStore } from "../../store/favorites";
 import { usePlayerStore } from "../../store/player";
+import { artistNameToId } from "../../lib/artist";
 import { api } from "../../lib/api";
 import type { FeedResponse, Track } from "../../types/track";
 import { Button, Card, Spinner, useThemeColor } from "heroui-native";
@@ -26,6 +28,15 @@ function getGreeting() {
   return "Good evening";
 }
 
+function openArtist(name: string) {
+  router.push({
+    pathname: "/(app)/artist/[id]",
+    params: { id: artistNameToId(name) },
+  });
+}
+
+/* ─── Featured Card ─────────────────────────────────────────────────────────── */
+
 function FeaturedCard({
   track,
   onPress,
@@ -33,79 +44,73 @@ function FeaturedCard({
   track: Track;
   onPress: () => void;
 }) {
-  const accentColor = useThemeColor("accent");
-
   return (
-    <Pressable onPress={onPress} style={{ width: 160 }}>
-      <View
-        style={{
-          width: 160,
-          height: 160,
-          borderRadius: 12,
-          overflow: "hidden",
-        }}
-      >
+    <Pressable onPress={onPress} className="w-[155px]">
+      <View className="w-[155px] h-[155px] rounded-[14px] overflow-hidden bg-field-background">
         <Image
           source={{ uri: track.cover_image }}
-          style={{ width: 160, height: 160 }}
+          style={{ width: 155, height: 155 }}
           contentFit="cover"
           transition={200}
         />
       </View>
 
-      <View
-        style={{
-          flexDirection: "row",
-          alignItems: "flex-start",
-          marginTop: 8,
-          paddingHorizontal: 2,
-        }}
-      >
+      <View className="flex-row items-start mt-2 px-0.5">
         <View
-          style={{
-            width: 3,
-            height: 30,
-            borderRadius: 2,
-            backgroundColor: accentColor,
-            marginRight: 6,
-            marginTop: 1,
-          }}
+          className="w-[3px] rounded-full bg-accent mr-1.5 mt-0.5"
+          style={{ height: 28 }}
         />
-        <View style={{ flex: 1 }}>
+        <View className="flex-1">
           <Text
             numberOfLines={1}
-            className="text-foreground text-[13px] font-bold tracking-[0.1px]"
+            className="text-foreground text-[13px] font-bold"
           >
             {track.title}
           </Text>
-          <Text
-            numberOfLines={1}
-            className="text-muted text-[11px] font-regular mt-0.5"
+          <Pressable
+            onPress={(e) => {
+              e.stopPropagation?.();
+              const name = track.artists[0]?.name;
+              if (name) openArtist(name);
+            }}
           >
-            {track.artists[0]?.name ?? "Unknown"}
-          </Text>
+            <Text
+              numberOfLines={1}
+              className="text-muted text-[11px] font-regular mt-0.5"
+            >
+              {track.artists[0]?.name ?? "Unknown"}
+            </Text>
+          </Pressable>
         </View>
       </View>
     </Pressable>
   );
 }
 
+/* ─── Track Row ─────────────────────────────────────────────────────────────── */
+
 function TrackRow({
   track,
   isActive,
+  isFavorite,
   onPress,
+  onToggleFavorite,
 }: {
   track: Track;
   isActive: boolean;
+  isFavorite: boolean;
   onPress: () => void;
+  onToggleFavorite: () => void;
 }) {
+  const mutedColor = useThemeColor("muted");
+
   return (
-    <Pressable onPress={onPress} className="mb-3">
-      <Card variant="secondary" className="flex-row items-center px-4 py-3">
-        <View className="w-13 h-13 rounded-[10px] overflow-hidden">
+    <Pressable onPress={onPress} className="mb-2.5">
+      <Card variant="secondary" className="flex-row items-center px-3.5 py-2.5">
+        <View className="w-12 h-12 rounded-[10px] overflow-hidden">
           <Image
             source={{ uri: track.cover_image }}
-            style={{ width: 52, height: 52 }}
+            style={{ width: 48, height: 48 }}
             contentFit="cover"
             transition={200}
           />
@@ -118,22 +123,57 @@ function TrackRow({
           >
             {track.title}
           </Text>
-          <Text
-            numberOfLines={1}
-            className="text-muted text-xs mt-0.5 font-regular"
-          >
-            {track.artists.map((a) => a.name).join(", ")}
-          </Text>
-          <Text className="text-muted text-xs mt-1 font-regular opacity-60">
-            {track.genre[0]} · {track.duration_formatted}
-          </Text>
+          <View className="flex-row items-center mt-0.5">
+            {track.artists.map((a, i) => (
+              <Pressable
+                key={`${track.id}-${a.name}`}
+                onPress={(e) => {
+                  e.stopPropagation?.();
+                  openArtist(a.name);
+                }}
+              >
+                <Text
+                  numberOfLines={1}
+                  className="text-muted text-xs font-regular"
+                >
+                  {a.name}
+                  {i < track.artists.length - 1 ? ", " : ""}
+                </Text>
+              </Pressable>
+            ))}
+            <Text className="text-muted text-xs font-regular opacity-50 mx-1">
+              ·
+            </Text>
+            <Text className="text-muted text-xs font-regular opacity-50">
+              {track.duration_formatted}
+            </Text>
+          </View>
         </View>
 
-        {isActive && <View className="w-2 h-2 rounded-full bg-accent ml-2" />}
+        {/* Favorite toggle */}
+        <TouchableOpacity
+          onPress={(e) => {
+            e.stopPropagation?.();
+            onToggleFavorite();
+          }}
+          activeOpacity={0.7}
+          hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+          className="ml-2 w-8 h-8 items-center justify-center"
+        >
+          <Ionicons
+            name={isFavorite ? "heart" : "heart-outline"}
+            size={18}
+            color={isFavorite ? "#EF4444" : mutedColor}
+          />
+        </TouchableOpacity>
+
+        {isActive && <View className="w-2 h-2 rounded-full bg-accent ml-1" />}
       </Card>
     </Pressable>
   );
 }
+
+/* ─── Mini Player ───────────────────────────────────────────────────────────── */
 
 function MiniPlayer({
   title,
@@ -157,12 +197,12 @@ function MiniPlayer({
         style={{
           shadowColor: "#000",
           shadowOffset: { width: 0, height: -2 },
-          shadowOpacity: 0.15,
-          shadowRadius: 8,
+          shadowOpacity: 0.12,
+          shadowRadius: 10,
           elevation: 10,
         }}
       >
-        <Card.Body className="flex-row items-center px-2">
+        <Card.Body className="flex-row items-center px-2.5">
           <View className="w-11 h-11 rounded-[10px] overflow-hidden">
             <Image
               source={{ uri: artworkUrl }}
@@ -208,11 +248,40 @@ function MiniPlayer({
   );
 }
 
+/* ─── Section Header ────────────────────────────────────────────────────────── */
+
+function SectionHeader({
+  icon,
+  title,
+  subtitle,
+}: {
+  icon: React.ComponentProps<typeof Ionicons>["name"];
+  title: string;
+  subtitle?: string;
+}) {
+  const accentColor = useThemeColor("accent");
+  return (
+    <View className="flex-row items-center justify-between px-6 mb-4">
+      <View className="flex-row items-center gap-2">
+        <Ionicons name={icon} size={20} color={accentColor} />
+        <Text className="text-foreground text-lg font-bold">{title}</Text>
+      </View>
+      {subtitle && (
+        <Text className="text-muted text-xs font-regular">{subtitle}</Text>
+      )}
+    </View>
+  );
+}
+
+/* ─── Home Screen ───────────────────────────────────────────────────────────── */
+
 export default function Home() {
   const userEmail = useAuthStore((s) => s.userEmail);
   const logout = useAuthStore((s) => s.logout);
   const { playTrack, togglePlay, trackMap } = usePlayerStore();
-  const favoriteCount = Object.keys(useFavoritesStore((s) => s.tracks)).length;
+  const favoriteTracks = useFavoritesStore((s) => s.tracks);
+  const toggleFavorite = useFavoritesStore((s) => s.toggleFavorite);
+  const favoriteCount = Object.keys(favoriteTracks).length;
   const accentColor = useThemeColor("accent");
 
   const activeItem = useActiveMediaItem();
@@ -278,6 +347,7 @@ export default function Home() {
           />
         }
       >
+        {/* ── Header ── */}
         <View className="flex-row items-center justify-between px-6 pt-safe-offset-2 pb-5">
           <View>
             <Text className="text-muted text-sm font-regular">
@@ -287,7 +357,7 @@ export default function Home() {
               <Text className="text-foreground text-2xl font-extraBold">
                 {username}
               </Text>
-              <Ionicons name="hand-right" size={24} color={accentColor} />
+              <Ionicons name="hand-right" size={22} color={accentColor} />
             </View>
           </View>
 
@@ -320,6 +390,7 @@ export default function Home() {
           </View>
         </View>
 
+        {/* ── Loading ── */}
         {loading && (
           <View className="items-center justify-center py-20 gap-4">
             <Spinner size="lg" color="default" />
@@ -329,6 +400,7 @@ export default function Home() {
           </View>
         )}
 
+        {/* ── Error ── */}
         {!loading && error && (
           <View className="mx-6">
             <Card className="items-center p-6">
@@ -360,25 +432,21 @@ export default function Home() {
           </View>
         )}
 
+        {/* ── Feed content ── */}
         {!loading && feed && (
           <>
-            <View className="mb-6">
-              <View className="flex-row items-center justify-between px-6 mb-4">
-                <View className="flex-row items-center gap-2">
-                  <Ionicons name="flame" size={20} color={accentColor} />
-                  <Text className="text-foreground text-lg font-bold">
-                    Featured
-                  </Text>
-                </View>
-                <Text className="text-muted text-xs font-regular">
-                  {feed.total} tracks total
-                </Text>
-              </View>
+            {/* Featured horizontal scroll */}
+            <View className="mb-7">
+              <SectionHeader
+                icon="flame"
+                title="Featured"
+                subtitle={`${feed.total} tracks total`}
+              />
 
               <ScrollView
                 horizontal
                 showsHorizontalScrollIndicator={false}
-                contentContainerStyle={{ paddingHorizontal: 24, gap: 12 }}
+                contentContainerStyle={{ paddingHorizontal: 24, gap: 14 }}
               >
                 {feed.featured.map((track) => (
                   <FeaturedCard
@@ -390,20 +458,18 @@ export default function Home() {
               </ScrollView>
             </View>
 
+            {/* Recently added list */}
             <View className="px-6 mb-4">
-              <View className="flex-row items-center gap-2 mb-4">
-                <Ionicons name="time-outline" size={20} color={accentColor} />
-                <Text className="text-foreground text-lg font-bold">
-                  Recently Added
-                </Text>
-              </View>
+              <SectionHeader icon="time-outline" title="Recently Added" />
 
               {feed.recent.map((track) => (
                 <TrackRow
                   key={track.id}
                   track={track}
                   isActive={currentTrack?.id === track.id}
+                  isFavorite={Boolean(favoriteTracks[track.id])}
                   onPress={() => handlePlayTrack(track, feed.recent)}
+                  onToggleFavorite={() => toggleFavorite(track)}
                 />
               ))}
             </View>
@@ -413,6 +479,7 @@ export default function Home() {
         <View className={currentTrack ? "h-24" : "h-6"} />
       </ScrollView>
 
+      {/* ── Mini Player ── */}
       {currentTrack && (
         <View className="absolute bottom-0 left-0 right-0">
           <MiniPlayer

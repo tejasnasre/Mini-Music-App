@@ -13,7 +13,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#FDFEFE"
+        "backgroundColor": "#FAF7F4"
       },
       "predictiveBackGestureEnabled": false,
       "package": "com.tejasnasre.minimusic"
@@ -27,7 +27,7 @@
       [
         "expo-splash-screen",
         {
-          "backgroundColor": "#FDFEFE",
+          "backgroundColor": "#FAF7F4",
           "image": "./assets/images/splash-icon-light.png",
           "imageWidth": 250
         }

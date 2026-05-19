@@ -1,6 +1,7 @@
 import { Router } from "express";
 import type { Request, Response, NextFunction } from "express";
 import { getFeedData } from "../services/tracks.service.ts";
+import { withPlaybackUrls } from "./playback-url.ts";
 
 export const feedRouter = Router();
 
@@ -23,7 +24,11 @@ feedRouter.get("/", (_req: Request, res: Response, next: NextFunction) => {
   try {
     const limit = Number(_req.query.limit) || 10;
     const feed = getFeedData(limit);
-    res.json(feed);
+    res.json({
+      ...feed,
+      featured: withPlaybackUrls(feed.featured, _req),
+      recent: withPlaybackUrls(feed.recent, _req),
+    });
   } catch (err) {
     next(err);
   }

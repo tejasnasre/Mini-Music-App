@@ -8,6 +8,7 @@ import {
   getTracksByGenre,
 } from "../services/tracks.service.ts";
 import { ApiError } from "../middleware/errorHandler.ts";
+import { withPlaybackUrl, withPlaybackUrls } from "./playback-url.ts";
 
 export const tracksRouter = Router();
 
@@ -28,7 +29,7 @@ tracksRouter.get("/", (req: Request, res: Response, next: NextFunction) => {
           ? getTracksByGenre(genre.trim())
           : getAllTracks();
 
-    res.json({ tracks, total: tracks.length });
+    res.json({ tracks: withPlaybackUrls(tracks, req), total: tracks.length });
   } catch (err) {
     next(err);
   }
@@ -51,7 +52,7 @@ tracksRouter.get<{ id: string }>(
         throw new ApiError(404, `Track "${id}" not found`);
       }
 
-      res.json({ track });
+      res.json({ track: withPlaybackUrl(track, req) });
     } catch (err) {
       next(err);
     }

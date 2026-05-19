@@ -6,6 +6,12 @@ export default function AppLayout() {
       <Stack.Screen name="index" />
       <Stack.Screen name="favorites" />
       <Stack.Screen
+        name="artist/[id]"
+        options={{
+          animation: "slide_from_right",
+        }}
+      />
+      <Stack.Screen
         name="player"
         options={{
           presentation: "modal",

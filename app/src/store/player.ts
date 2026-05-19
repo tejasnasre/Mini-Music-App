@@ -1,12 +1,13 @@
 import { create } from "zustand";
 import TrackPlayer from "@rntp/player";
 import type { Track } from "@/types/track";
+import { getPlaybackUrl } from "@/lib/api";
 
 /** Convert our Track → RNTP MediaItem shape */
 export function toMediaItem(track: Track) {
   return {
     mediaId: track.id,
-    url: track.audio.stream_url,
+    url: getPlaybackUrl(track.id),
     title: track.title,
     artist: track.artists.map((a) => a.name).join(", "),
     albumTitle: track.album,

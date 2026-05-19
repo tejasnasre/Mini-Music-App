@@ -5,19 +5,22 @@ import {
   GestureResponderEvent,
   Pressable,
   ScrollView,
+  Platform,
 } from "react-native";
+import { VolumeManager } from "react-native-volume-manager";
 import { Image } from "expo-image";
 import { StatusBar } from "expo-status-bar";
 import { router } from "expo-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import TrackPlayer, {
   useActiveMediaItem,
   useIsPlaying,
   useProgress,
 } from "@rntp/player";
 import { Ionicons } from "@expo/vector-icons";
-import { useThemeColor } from "heroui-native";
+import { Slider, useThemeColor } from "heroui-native";
 
+import { artistNameToId } from "../../lib/artist";
 import { api } from "../../lib/api";
 import { useFavoritesStore } from "../../store/favorites";
 import { usePlayerStore } from "../../store/player";
@@ -119,46 +122,6 @@ function SeekBar({
   );
 }
 
-function VolumeSlider({
-  volume,
-  onChange,
-}: {
-  volume: number;
-  onChange: (v: number) => void;
-}) {
-  const [barWidth, setBarWidth] = useState(0);
-
-  const updateFromX = (x: number) => {
-    if (barWidth <= 0) return;
-    onChange(Math.max(0, Math.min(x / barWidth, 1)));
-  };
-
-  return (
-    <View
-      onLayout={(e) => setBarWidth(e.nativeEvent.layout.width)}
-      onStartShouldSetResponder={() => true}
-      onMoveShouldSetResponder={() => true}
-      onResponderGrant={(e) => updateFromX(e.nativeEvent.locationX)}
-      onResponderMove={(e) => updateFromX(e.nativeEvent.locationX)}
-      className="py-4"
-    >
-      <View className="h-1.25 rounded-full bg-muted/30 overflow-hidden">
-        <View
-          className="h-1.25 rounded-full bg-accent"
-          style={{ width: `${volume * 100}%` }}
-        />
-      </View>
-
-      {barWidth > 0 && (
-        <View
-          className="absolute w-4 h-4 rounded-full bg-accent top-2.5"
-          style={{ left: volume * barWidth - 8 }}
-        />
-      )}
-    </View>
-  );
-}
-
 function DetailPill({ icon, label }: { icon: IoniconName; label: string }) {
   return (
     <View className="flex-row items-center gap-2 rounded-2xl bg-field-background px-3 py-2">
@@ -178,24 +141,69 @@ function ControlsPanel({
   onClose: () => void;
 }) {
   const [volume, setVolumeState] = useState(1);
+  const draggingRef = useRef(false);
   const foregroundColor = useThemeColor("foreground");
   const mutedColor = useThemeColor("muted");
 
   useEffect(() => {
     if (!visible) return;
 
-    try {
-      setVolumeState(TrackPlayer.getVolume());
-    } catch {
-      setVolumeState(1);
-    }
+    let mounted = true;
+
+    const syncVolume = async () => {
+      try {
+        if (Platform.OS === "web") {
+          setVolumeState(TrackPlayer.getVolume());
+          return;
+        }
+
+        TrackPlayer.setVolume(1);
+        await VolumeManager.showNativeVolumeUI({ enabled: false });
+        const { volume } = await VolumeManager.getVolume();
+        if (mounted) setVolumeState(volume);
+      } catch {
+        if (mounted) setVolumeState(1);
+      }
+    };
+
+    void syncVolume();
+
+    const subscription =
+      Platform.OS !== "web"
+        ? VolumeManager.addVolumeListener(({ volume }) => {
+            if (mounted && !draggingRef.current) setVolumeState(volume);
+          })
+        : null;
+
+    return () => {
+      mounted = false;
+      subscription?.remove();
+      if (Platform.OS !== "web") {
+        void VolumeManager.showNativeVolumeUI({ enabled: true });
+      }
+    };
   }, [visible]);
 
   if (!visible) return null;
 
-  const handleVolumeChange = (v: number) => {
-    setVolumeState(v);
-    TrackPlayer.setVolume(v);
+  const applyVolume = (v: number) => {
+    const clamped = Math.max(0, Math.min(v, 1));
+    setVolumeState(clamped);
+    if (Platform.OS === "web") {
+      TrackPlayer.setVolume(clamped);
+    } else {
+      void VolumeManager.setVolume(clamped);
+    }
+  };
+
+  const handleSliderChange = (value: number | number[]) => {
+    draggingRef.current = true;
+    applyVolume((value as number) / 100);
+  };
+
+  const handleSliderChangeEnd = (value: number | number[]) => {
+    draggingRef.current = false;
+    applyVolume((value as number) / 100);
   };
 
   return (
@@ -220,11 +228,28 @@ function ControlsPanel({
         <View className="rounded-3xl bg-background p-4 mb-4">
           <View className="flex-row items-center gap-3">
             <Ionicons name={volumeIcon(volume)} size={22} color={mutedColor} />
-            <View className="flex-1">
-              <VolumeSlider volume={volume} onChange={handleVolumeChange} />
+            <View className="flex-1 py-1">
+              <Slider
+                value={Math.round(volume * 100)}
+                minValue={0}
+                maxValue={100}
+                step={1}
+                onChange={handleSliderChange}
+                onChangeEnd={handleSliderChangeEnd}
+              >
+                <Slider.Track className="h-1.5 rounded-full bg-muted/30">
+                  <Slider.Fill className="rounded-full bg-accent" />
+                  <Slider.Thumb
+                    classNames={{
+                      thumbContainer: "size-4 rounded-full bg-accent",
+                      thumbKnob: "size-2 rounded-full bg-accent",
+                    }}
+                  />
+                </Slider.Track>
+              </Slider>
             </View>
             <TouchableOpacity
-              onPress={() => handleVolumeChange(volume === 0 ? 1 : 0)}
+              onPress={() => applyVolume(volume === 0 ? 1 : 0)}
               className="w-10 h-10 rounded-full bg-field-background items-center justify-center"
             >
               <Ionicons
@@ -310,7 +335,6 @@ export default function PlayerScreen() {
     );
   }
 
-  const artistNames = track.artists.map((a) => a.name).join(", ");
   const currentIndex = queue.findIndex((t) => t.id === track.id);
   const hasPrev = currentIndex > 0;
   const hasNext = currentIndex >= 0 && currentIndex < queue.length - 1;
@@ -376,12 +400,27 @@ export default function PlayerScreen() {
               >
                 {track.title}
               </Text>
-              <Text
-                numberOfLines={1}
-                className="text-muted text-base mt-2 font-regular"
-              >
-                {artistNames}
-              </Text>
+              <View className="flex-row flex-wrap mt-2">
+                {track.artists.map((a, i) => (
+                  <Pressable
+                    key={`${track.id}-${a.name}`}
+                    onPress={() =>
+                      router.push({
+                        pathname: "/(app)/artist/[id]",
+                        params: { id: artistNameToId(a.name) },
+                      })
+                    }
+                  >
+                    <Text
+                      numberOfLines={1}
+                      className="text-muted text-base font-regular"
+                    >
+                      {a.name}
+                      {i < track.artists.length - 1 ? ", " : ""}
+                    </Text>
+                  </Pressable>
+                ))}
+              </View>
             </View>
 
             <TouchableOpacity
