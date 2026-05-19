@@ -1,9 +1,11 @@
 import { DbSchema, type Track } from "../schemas/track.schema.js";
 import fs from "node:fs";
-import path from "node:path";
+import path, { dirname } from "node:path";
+import { fileURLToPath } from "node:url";
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
 const raw = JSON.parse(
-  fs.readFileSync(path.join(import.meta.dir, "/../data/tracks.json"), "utf-8"),
+  fs.readFileSync(path.join(__dirname, "/../data/tracks.json"), "utf-8"),
 );
 const db = DbSchema.parse(raw);
 

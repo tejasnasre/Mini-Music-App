@@ -5,10 +5,12 @@ import {
 import type { Track } from "../schemas/track.schema.js";
 import { getAllTracks } from "./tracks.service.js";
 import fs from "node:fs";
-import path from "node:path";
+import path, { dirname } from "node:path";
+import { fileURLToPath } from "node:url";
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
 const raw = JSON.parse(
-  fs.readFileSync(path.join(import.meta.dir, "/../data/artists.json"), "utf-8"),
+  fs.readFileSync(path.join(__dirname, "/../data/artists.json"), "utf-8"),
 );
 const db = ArtistsDbSchema.parse(raw);
 
