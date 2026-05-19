@@ -1,17 +1,20 @@
 import { Router } from "express";
 import type { Request, Response, NextFunction } from "express";
 import fs from "node:fs";
-import path from "node:path";
+import path, { dirname } from "node:path";
+import { fileURLToPath } from "node:url";
 import { getTrackById, getTrackBySlug } from "../services/tracks.service.js";
 import { ApiError } from "../middleware/errorHandler.js";
 
 export const hlsRouter = Router();
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
 // Resolve chunks directory relative to this file
-// import.meta.dir gives us: .../backend/src/routes
+// __dirname gives us: .../backend/src/routes
 // We need: .../backend/src/temp/chunks
 // So we go up 1 level (..) to get to .../backend/src, then into temp/chunks
-const CHUNKS_DIR = path.join(import.meta.dir, "..", "temp", "chunks");
+const CHUNKS_DIR = path.join(__dirname, "..", "temp", "chunks");
 
 /**
  * GET /api/hls/:trackId/playlist.m3u8
