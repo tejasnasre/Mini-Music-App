@@ -1,5 +1,3 @@
-// ─── Domain types mirroring the backend schema ────────────────────────────────
-
 export interface Artist {
   name: string;
   role: string;
@@ -49,8 +47,6 @@ export interface Track {
   created_at: string;
   updated_at: string;
 }
-
-// ─── API response shapes ───────────────────────────────────────────────────────
 
 export interface FeedResponse {
   featured: Track[];

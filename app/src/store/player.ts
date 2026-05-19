@@ -8,7 +8,8 @@ export function toMediaItem(track: Track) {
   return {
     mediaId: track.id,
     url: getHlsPlaybackUrl(track.id),
-    mimeType: "application/x-mpegURL",
+    type: "hls",
+    // mimeType: "application/x-mpegURL",
     title: track.title,
     artist: track.artists.map((a) => a.name).join(", "),
     albumTitle: track.album,
@@ -130,7 +131,12 @@ export const usePlayerStore = create<PlayerStore>()((set, get) => ({
   skipToNext: async () => {
     try {
       const currentQueue = TrackPlayer.getQueue();
-      const currentIndex = TrackPlayer.getActiveIndex();
+      const activeMediaItem = TrackPlayer.getActiveMediaItem();
+      const currentIndex = activeMediaItem
+        ? currentQueue.findIndex(
+            (item) => item.mediaId === activeMediaItem.mediaId,
+          )
+        : -1;
       console.log(
         "[Player] skipToNext - current index:",
         currentIndex,
@@ -154,7 +160,13 @@ export const usePlayerStore = create<PlayerStore>()((set, get) => ({
 
   skipToPrevious: async () => {
     try {
-      const currentIndex = TrackPlayer.getActiveIndex();
+      const activeMediaItem = TrackPlayer.getActiveMediaItem();
+      const currentQueue = TrackPlayer.getQueue();
+      const currentIndex = activeMediaItem
+        ? currentQueue.findIndex(
+            (item) => item.mediaId === activeMediaItem.mediaId,
+          )
+        : -1;
       console.log("[Player] skipToPrevious - current index:", currentIndex);
 
       if (currentIndex > 0) {

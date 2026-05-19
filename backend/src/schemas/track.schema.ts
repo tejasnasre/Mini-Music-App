@@ -1,7 +1,5 @@
 import { z } from "zod";
 
-// ── Nested schemas ────────────────────────────────────────────────────────────
-
 const ArtistSchema = z.object({
   name: z.string(),
   role: z.string(),
@@ -46,8 +44,6 @@ const AvailabilitySchema = z.object({
   regions_blocked: z.array(z.string()),
 });
 
-// ── Root track schema ─────────────────────────────────────────────────────────
-
 export const TrackSchema = z.object({
   id: z.string(),
   title: z.string(),
@@ -79,8 +75,6 @@ export const TrackSchema = z.object({
 });
 
 export type Track = z.infer<typeof TrackSchema>;
-
-// ── Database wrapper ──────────────────────────────────────────────────────────
 
 export const DbSchema = z.object({
   tracks: z.array(TrackSchema),

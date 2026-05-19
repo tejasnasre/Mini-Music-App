@@ -1,33 +1,20 @@
 import { DbSchema, type Track } from "../schemas/track.schema.ts";
 
-// ── Load & validate JSON DB at startup ────────────────────────────────────────
-// Bun can import JSON natively; Zod validates the shape at boot time
-// so any malformed entry is caught immediately, not at request time.
-
 const raw = await Bun.file(import.meta.dir + "/../data/tracks.json").json();
-const db  = DbSchema.parse(raw);
+const db = DbSchema.parse(raw);
 
-// ── Read helpers ──────────────────────────────────────────────────────────────
-
-/** Every track in the DB */
 export function getAllTracks(): Track[] {
   return db.tracks;
 }
 
-/** Single track by its unique ID */
 export function getTrackById(id: string): Track | undefined {
   return db.tracks.find((t) => t.id === id);
 }
 
-/** Single track by slug */
 export function getTrackBySlug(slug: string): Track | undefined {
   return db.tracks.find((t) => t.slug === slug);
 }
 
-/**
- * Full-text search across:
- *   title · artist names · album · genre · tags · mood
- */
 export function searchTracks(query: string): Track[] {
   const q = query.toLowerCase().trim();
   if (!q) return db.tracks;
@@ -43,7 +30,6 @@ export function searchTracks(query: string): Track[] {
   );
 }
 
-/** Filter by genre (case-insensitive partial match) */
 export function getTracksByGenre(genre: string): Track[] {
   const g = genre.toLowerCase();
   return db.tracks.filter((t) =>
@@ -51,15 +37,10 @@ export function getTracksByGenre(genre: string): Track[] {
   );
 }
 
-/**
- * Home feed:
- *   featured — top N by popularity (streamable only)
- *   recent   — top N by release date (newest first)
- */
 export function getFeedData(limit = 10): {
   featured: Track[];
-  recent:   Track[];
-  total:    number;
+  recent: Track[];
+  total: number;
 } {
   const streamable = db.tracks.filter((t) => t.availability.streamable);
 
@@ -70,8 +51,7 @@ export function getFeedData(limit = 10): {
   const recent = [...streamable]
     .sort(
       (a, b) =>
-        new Date(b.release_date).getTime() -
-        new Date(a.release_date).getTime(),
+        new Date(b.release_date).getTime() - new Date(a.release_date).getTime(),
     )
     .slice(0, limit);
 

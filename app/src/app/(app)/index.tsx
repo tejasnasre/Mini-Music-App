@@ -35,8 +35,6 @@ function openArtist(name: string) {
   });
 }
 
-/* ─── Featured Card ─────────────────────────────────────────────────────────── */
-
 function FeaturedCard({
   track,
   onPress,
@@ -86,8 +84,6 @@ function FeaturedCard({
     </Pressable>
   );
 }
-
-/* ─── Track Row ─────────────────────────────────────────────────────────────── */
 
 function TrackRow({
   track,
@@ -173,8 +169,6 @@ function TrackRow({
   );
 }
 
-/* ─── Mini Player ───────────────────────────────────────────────────────────── */
-
 function MiniPlayer({
   title,
   artist,
@@ -248,8 +242,6 @@ function MiniPlayer({
   );
 }
 
-/* ─── Section Header ────────────────────────────────────────────────────────── */
-
 function SectionHeader({
   icon,
   title,
@@ -272,8 +264,6 @@ function SectionHeader({
     </View>
   );
 }
-
-/* ─── Home Screen ───────────────────────────────────────────────────────────── */
 
 export default function Home() {
   const userEmail = useAuthStore((s) => s.userEmail);
@@ -347,7 +337,6 @@ export default function Home() {
           />
         }
       >
-        {/* ── Header ── */}
         <View className="flex-row items-center justify-between px-6 pt-safe-offset-2 pb-5">
           <View>
             <Text className="text-muted text-sm font-regular">
@@ -390,7 +379,6 @@ export default function Home() {
           </View>
         </View>
 
-        {/* ── Loading ── */}
         {loading && (
           <View className="items-center justify-center py-20 gap-4">
             <Spinner size="lg" color="default" />
@@ -400,7 +388,6 @@ export default function Home() {
           </View>
         )}
 
-        {/* ── Error ── */}
         {!loading && error && (
           <View className="mx-6">
             <Card className="items-center p-6">
@@ -432,10 +419,8 @@ export default function Home() {
           </View>
         )}
 
-        {/* ── Feed content ── */}
         {!loading && feed && (
           <>
-            {/* Featured horizontal scroll */}
             <View className="mb-7">
               <SectionHeader
                 icon="flame"
@@ -458,7 +443,6 @@ export default function Home() {
               </ScrollView>
             </View>
 
-            {/* Recently added list */}
             <View className="px-6 mb-4">
               <SectionHeader icon="time-outline" title="Recently Added" />
 
@@ -479,7 +463,6 @@ export default function Home() {
         <View className={currentTrack ? "h-24" : "h-6"} />
       </ScrollView>
 
-      {/* ── Mini Player ── */}
       {currentTrack && (
         <View className="absolute bottom-0 left-0 right-0">
           <MiniPlayer

@@ -11,8 +11,6 @@ import TrackPlayer, { Event, PlayerCommand } from "@rntp/player";
 
 SplashScreen.preventAutoHideAsync();
 
-// ─── Root layout ───────────────────────────────────────────────────────────────
-
 export default function RootLayout() {
   const playerSetupDoneRef = useRef(false);
 
@@ -89,12 +87,6 @@ export default function RootLayout() {
 
   return (
     <GestureHandlerRootView className="flex-1">
-      {/*
-       * SafeAreaListener acts as the SafeAreaProvider AND fires onChange
-       * whenever insets change (rotation, keyboard, multi-window, etc.).
-       * Calling Uniwind.updateInsets keeps all pt-safe / pb-safe-offset-*
-       * Tailwind classes in sync with the real device insets.
-       */}
       <SafeAreaListener onChange={({ insets }) => Uniwind.updateInsets(insets)}>
         <HeroUINativeProvider
           config={{ devInfo: { stylingPrinciples: false } }}

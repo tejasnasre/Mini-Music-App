@@ -10,7 +10,7 @@ import { errorHandler } from "./middleware/errorHandler.ts";
 
 const app = express();
 
-app.use(cors());
+app.use(cors({ origin: "*" }));
 app.use(express.json());
 
 app.get("/", (_req, res) => {
@@ -29,7 +29,6 @@ app.use((_req, res) => {
 
 app.use(errorHandler);
 
-// ── Start ─────────────────────────────────────────────────────────────────────
 app.listen(env.PORT, () => {
   console.log(`🎵 Mini Music API  →  http://localhost:${env.PORT}`);
   console.log(`   Feed endpoint    →  http://localhost:${env.PORT}/api/feed`);

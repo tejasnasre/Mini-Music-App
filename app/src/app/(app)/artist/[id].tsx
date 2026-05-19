@@ -21,8 +21,6 @@ import { usePlayerStore } from "@/store/player";
 import type { ArtistProfile } from "@/types/artist";
 import type { Track } from "@/types/track";
 
-/* ─── Track Row ─────────────────────────────────────────────────────────────── */
-
 function TrackRow({
   track,
   index,
@@ -39,7 +37,6 @@ function TrackRow({
   return (
     <Pressable onPress={onPress} className="mb-2.5">
       <Card variant="secondary" className="flex-row items-center px-3.5 py-3">
-        {/* Track number */}
         <View className="w-8 items-center justify-center">
           {isActive ? (
             <Ionicons name="musical-note" size={16} color={accentColor} />
@@ -50,7 +47,6 @@ function TrackRow({
           )}
         </View>
 
-        {/* Cover art */}
         <View className="w-12 h-12 rounded-[10px] overflow-hidden ml-1">
           <Image
             source={{ uri: track.cover_image }}
@@ -60,7 +56,6 @@ function TrackRow({
           />
         </View>
 
-        {/* Track info */}
         <View className="flex-1 ml-3">
           <Text
             numberOfLines={1}
@@ -81,14 +76,11 @@ function TrackRow({
           </View>
         </View>
 
-        {/* Active indicator */}
         {isActive && <View className="w-2 h-2 rounded-full bg-accent ml-2" />}
       </Card>
     </Pressable>
   );
 }
-
-/* ─── Social Button ─────────────────────────────────────────────────────────── */
 
 function SocialButton({
   icon,
@@ -115,8 +107,6 @@ function SocialButton({
   );
 }
 
-/* ─── Stat Card ─────────────────────────────────────────────────────────────── */
-
 function StatCard({
   icon,
   value,
@@ -138,8 +128,6 @@ function StatCard({
   );
 }
 
-/* ─── Avatar Fallback ───────────────────────────────────────────────────────── */
-
 function ArtistAvatarFallback({ iconSize = 40 }: { iconSize?: number }) {
   return (
     <View className="flex-1 items-center justify-center bg-accent/15">
@@ -147,8 +135,6 @@ function ArtistAvatarFallback({ iconSize = 40 }: { iconSize?: number }) {
     </View>
   );
 }
-
-/* ─── Main Screen ───────────────────────────────────────────────────────────── */
 
 export default function ArtistProfileScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -232,7 +218,6 @@ export default function ArtistProfileScreen() {
     <View className="flex-1 bg-background">
       <StatusBar style="light" />
 
-      {/* ── Floating back button ── */}
       <View className="absolute top-0 left-0 right-0 z-10 flex-row items-center justify-between px-5 pt-safe-offset-2">
         <TouchableOpacity
           onPress={() => router.back()}
@@ -243,7 +228,6 @@ export default function ArtistProfileScreen() {
         </TouchableOpacity>
       </View>
 
-      {/* ── Loading state ── */}
       {loading && (
         <View className="flex-1 items-center justify-center gap-4">
           <Spinner size="lg" color="default" />
@@ -253,7 +237,6 @@ export default function ArtistProfileScreen() {
         </View>
       )}
 
-      {/* ── Error state ── */}
       {!loading && error && (
         <View className="flex-1 items-center justify-center px-8">
           <View className="w-20 h-20 rounded-full bg-field-background items-center justify-center mb-5">
@@ -278,7 +261,6 @@ export default function ArtistProfileScreen() {
         </View>
       )}
 
-      {/* ── Artist content ── */}
       {!loading && artist && (
         <ScrollView
           showsVerticalScrollIndicator={false}
@@ -290,7 +272,6 @@ export default function ArtistProfileScreen() {
             />
           }
         >
-          {/* ── Cover image ── */}
           <View className="h-56 bg-field-background">
             {artist.cover_image && !coverImageFailed ? (
               <Image
@@ -307,11 +288,9 @@ export default function ArtistProfileScreen() {
             )}
           </View>
 
-          {/* ── Artist info section ── */}
           <View className="px-6">
-            {/* Avatar – overlaps the cover image bottom edge */}
             <View className="-mt-14 mb-3">
-              <View className="w-[100px] h-[100px] rounded-full overflow-hidden border-[3px] border-background bg-field-background">
+              <View className="w-25 h-25 rounded-full overflow-hidden border-[3px] border-background bg-field-background">
                 {artist.image && !artistImageFailed ? (
                   <Image
                     source={{ uri: artist.image }}
@@ -326,7 +305,6 @@ export default function ArtistProfileScreen() {
               </View>
             </View>
 
-            {/* Name + type – sits on solid background below avatar */}
             <View className="mb-1">
               <View className="flex-row items-center gap-1.5">
                 <Text
@@ -349,7 +327,6 @@ export default function ArtistProfileScreen() {
               </Text>
             </View>
 
-            {/* Genre chips */}
             <View className="flex-row flex-wrap gap-2 mt-4">
               {artist.genres.map((genre) => (
                 <View
@@ -363,12 +340,10 @@ export default function ArtistProfileScreen() {
               ))}
             </View>
 
-            {/* Bio */}
-            <Text className="text-muted text-sm font-regular leading-[22px] mt-4">
+            <Text className="text-muted text-sm font-regular leading-5.5 mt-4">
               {artist.bio}
             </Text>
 
-            {/* ── Action buttons: Play All + Shuffle ── */}
             {tracks.length > 0 && (
               <View className="flex-row gap-3 mt-5">
                 <Button
@@ -390,7 +365,6 @@ export default function ArtistProfileScreen() {
               </View>
             )}
 
-            {/* ── Stats ── */}
             {stats && (
               <View className="flex-row gap-3 mt-5">
                 <StatCard
@@ -406,7 +380,6 @@ export default function ArtistProfileScreen() {
               </View>
             )}
 
-            {/* ── Social links ── */}
             {(artist.socials.youtube ||
               artist.socials.spotify ||
               artist.socials.instagram) && (
@@ -432,7 +405,6 @@ export default function ArtistProfileScreen() {
               </View>
             )}
 
-            {/* ── Track list header ── */}
             <View className="flex-row items-center gap-2 mt-8 mb-4">
               <Ionicons name="musical-notes" size={20} color={accentColor} />
               <Text className="text-foreground text-lg font-bold">
@@ -443,7 +415,6 @@ export default function ArtistProfileScreen() {
               </Text>
             </View>
 
-            {/* ── Track list ── */}
             {tracks.length === 0 ? (
               <View className="items-center py-10 rounded-3xl bg-field-background">
                 <Ionicons
