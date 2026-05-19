@@ -1,8 +1,8 @@
 import { Router } from "express";
 import type { Request, Response, NextFunction } from "express";
 import { Readable } from "node:stream";
-import { getTrackById, getTrackBySlug } from "../services/tracks.service.ts";
-import { ApiError } from "../middleware/errorHandler.ts";
+import { getTrackById, getTrackBySlug } from "../services/tracks.service.js";
+import { ApiError } from "../middleware/errorHandler.js";
 
 export const streamRouter = Router();
 

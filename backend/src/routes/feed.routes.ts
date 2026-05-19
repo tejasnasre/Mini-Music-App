@@ -1,7 +1,7 @@
 import { Router } from "express";
 import type { Request, Response, NextFunction } from "express";
-import { getFeedData } from "../services/tracks.service.ts";
-import { withPlaybackUrls } from "./playback-url.ts";
+import { getFeedData } from "../services/tracks.service.js";
+import { withPlaybackUrls } from "./playback-url.js";
 
 export const feedRouter = Router();
 

@@ -2,8 +2,8 @@ import { Router } from "express";
 import type { Request, Response, NextFunction } from "express";
 import fs from "node:fs";
 import path from "node:path";
-import { getTrackById, getTrackBySlug } from "../services/tracks.service.ts";
-import { ApiError } from "../middleware/errorHandler.ts";
+import { getTrackById, getTrackBySlug } from "../services/tracks.service.js";
+import { ApiError } from "../middleware/errorHandler.js";
 
 export const hlsRouter = Router();
 

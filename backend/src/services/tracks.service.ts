@@ -1,4 +1,4 @@
-import { DbSchema, type Track } from "../schemas/track.schema.ts";
+import { DbSchema, type Track } from "../schemas/track.schema.js";
 
 const raw = await Bun.file(import.meta.dir + "/../data/tracks.json").json();
 const db = DbSchema.parse(raw);

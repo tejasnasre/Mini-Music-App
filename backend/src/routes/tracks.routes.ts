@@ -6,8 +6,8 @@ import {
   getTrackBySlug,
   searchTracks,
   getTracksByGenre,
-} from "../services/tracks.service.ts";
-import { ApiError } from "../middleware/errorHandler.ts";
+} from "../services/tracks.service.js";
+import { ApiError } from "../middleware/errorHandler.js";
 import { withPlaybackUrl, withPlaybackUrls } from "./playback-url.ts";
 
 export const tracksRouter = Router();

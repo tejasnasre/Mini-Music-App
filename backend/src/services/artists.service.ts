@@ -1,6 +1,9 @@
-import { ArtistsDbSchema, type ArtistProfile } from "../schemas/artist.schema.ts";
-import type { Track } from "../schemas/track.schema.ts";
-import { getAllTracks } from "./tracks.service.ts";
+import {
+  ArtistsDbSchema,
+  type ArtistProfile,
+} from "../schemas/artist.schema.js";
+import type { Track } from "../schemas/track.schema.js";
+import { getAllTracks } from "./tracks.service.js";
 
 const raw = await Bun.file(import.meta.dir + "/../data/artists.json").json();
 const db = ArtistsDbSchema.parse(raw);
@@ -11,7 +14,9 @@ function normalize(value: string): string {
 
 function matchesArtist(track: Track, artist: ArtistProfile): boolean {
   const artistName = normalize(artist.name);
-  return track.artists.some((trackArtist) => normalize(trackArtist.name) === artistName);
+  return track.artists.some(
+    (trackArtist) => normalize(trackArtist.name) === artistName,
+  );
 }
 
 export function getAllArtists(): ArtistProfile[] {
@@ -21,7 +26,10 @@ export function getAllArtists(): ArtistProfile[] {
 export function getArtistById(id: string): ArtistProfile | undefined {
   const key = normalize(id);
   return db.artists.find(
-    (artist) => artist.id === key || artist.slug === key || normalize(artist.name) === key,
+    (artist) =>
+      artist.id === key ||
+      artist.slug === key ||
+      normalize(artist.name) === key,
   );
 }
 

@@ -1,12 +1,12 @@
 import express from "express";
 import cors from "cors";
-import { env } from "./config/env.ts";
-import { artistsRouter } from "./routes/artists.routes.ts";
-import { feedRouter } from "./routes/feed.routes.ts";
-import { tracksRouter } from "./routes/tracks.routes.ts";
-import { streamRouter } from "./routes/stream.routes.ts";
-import { hlsRouter } from "./routes/hls.routes.ts";
-import { errorHandler } from "./middleware/errorHandler.ts";
+import { env } from "./config/env.js";
+import { artistsRouter } from "./routes/artists.routes.js";
+import { feedRouter } from "./routes/feed.routes.js";
+import { tracksRouter } from "./routes/tracks.routes.js";
+import { streamRouter } from "./routes/stream.routes.js";
+import { hlsRouter } from "./routes/hls.routes.js";
+import { errorHandler } from "./middleware/errorHandler.js";
 
 const app = express();
 

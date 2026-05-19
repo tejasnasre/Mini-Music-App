@@ -1,13 +1,13 @@
 import { Router } from "express";
 import type { Request, Response, NextFunction } from "express";
-import { ApiError } from "../middleware/errorHandler.ts";
+import { ApiError } from "../middleware/errorHandler.js";
 import {
   getAllArtists,
   getArtistById,
   getArtistStats,
   getTracksByArtist,
   searchArtists,
-} from "../services/artists.service.ts";
+} from "../services/artists.service.js";
 import { withPlaybackUrls } from "./playback-url.ts";
 
 export const artistsRouter = Router();
@@ -15,9 +15,10 @@ export const artistsRouter = Router();
 artistsRouter.get("/", (req: Request, res: Response, next: NextFunction) => {
   try {
     const { q } = req.query;
-    const artists = typeof q === "string" && q.trim()
-      ? searchArtists(q.trim())
-      : getAllArtists();
+    const artists =
+      typeof q === "string" && q.trim()
+        ? searchArtists(q.trim())
+        : getAllArtists();
 
     res.json({
       artists: artists.map((artist) => ({
