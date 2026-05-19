@@ -83,6 +83,43 @@ This will start the Expo development server and launch the app in the selected e
 
 ---
 
+### 3. Building the App with EAS
+
+To create a standalone build of the application for distribution, we use [Expo Application Services (EAS)](https://expo.dev/eas).
+
+1.  **Install the EAS CLI:**
+    If you don't have it installed, you can install it globally:
+
+    ```bash
+    npm install -g eas-cli
+    ```
+
+2.  **Log in to your Expo account:**
+
+    ```bash
+    eas login
+    ```
+
+3.  **Configure the build:**
+    The `eas.json` file in the `app` directory is pre-configured for different build profiles.
+
+4.  **Start the build:**
+    You can build for Android or iOS using the following commands from the `app` directory:
+    - **Android (APK):**
+
+      ```bash
+      cd app
+      eas build --profile preview --platform android
+      ```
+
+    - **iOS:**
+      ```bash
+      cd app
+      eas build --profile preview --platform ios
+      ```
+
+---
+
 ## Diagrams
 
 ### Audio Streaming Methods
@@ -98,6 +135,11 @@ This will start the Expo development server and launch the app in the selected e
 ![Client Server Workflow](./hls_workflow_diagram.svg)
 
 ## Approach and Project Structure
+
+## References
+
+- [HLS Audio Streaming in Node.js](https://medium.com/@sandipbasnet/hls-audio-streaming-in-node-js-f89501c86a21)
+- [Broadcasting and Streaming Live Audio Using Node.js, FFmpeg, React, and React Native](https://medium.com/@mustneerahmadr7/broadcasting-and-streaming-live-audio-using-node-js-ffmpeg-react-and-react-native-09604f0937f0)
 
 ### Backend
 
