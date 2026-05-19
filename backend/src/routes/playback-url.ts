@@ -1,5 +1,5 @@
 import type { Request } from "express";
-import type { Track } from "../schemas/track.schema.ts";
+import type { Track } from "../schemas/track.schema.js";
 
 function getBaseUrl(req: Request): string {
   const forwardedProto = req.get("x-forwarded-proto")?.split(",")[0]?.trim();

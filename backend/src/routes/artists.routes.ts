@@ -8,7 +8,7 @@ import {
   getTracksByArtist,
   searchArtists,
 } from "../services/artists.service.js";
-import { withPlaybackUrls } from "./playback-url.ts";
+import { withPlaybackUrls } from "./playback-url.js";
 
 export const artistsRouter = Router();
 
