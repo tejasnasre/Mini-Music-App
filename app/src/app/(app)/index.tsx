@@ -45,8 +45,8 @@ function FeaturedCard({
   onPress: () => void;
 }) {
   return (
-    <Pressable onPress={onPress} className="w-[155px]">
-      <View className="w-[155px] h-[155px] rounded-[14px] overflow-hidden bg-field-background">
+    <Pressable onPress={onPress} className="w-38.75">
+      <View className="w-38.75 h-38.75 rounded-[14px] overflow-hidden bg-field-background">
         <Image
           source={{ uri: track.cover_image }}
           style={{ width: 155, height: 155 }}
@@ -57,7 +57,7 @@ function FeaturedCard({
 
       <View className="flex-row items-start mt-2 px-0.5">
         <View
-          className="w-[3px] rounded-full bg-accent mr-1.5 mt-0.5"
+          className="w-0.75 rounded-full bg-accent mr-1.5 mt-0.5"
           style={{ height: 28 }}
         />
         <View className="flex-1">

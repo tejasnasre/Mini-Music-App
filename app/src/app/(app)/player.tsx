@@ -272,7 +272,7 @@ function ControlsPanel({
 }
 
 export default function PlayerScreen() {
-  const { trackMap, queue } = usePlayerStore();
+  const { trackMap, queue, currentTrack } = usePlayerStore();
   const favoriteTracks = useFavoritesStore((s) => s.tracks);
   const toggleFavorite = useFavoritesStore((s) => s.toggleFavorite);
   const [showControls, setShowControls] = useState(false);
@@ -284,12 +284,20 @@ export default function PlayerScreen() {
   const accentColor = useThemeColor("accent");
   const mutedColor = useThemeColor("muted");
 
+  // Use RNTP's activeItem if available, otherwise fall back to currentTrack from store
   const storeTrack = activeItem?.mediaId
     ? (trackMap[activeItem.mediaId] ??
       favoriteTracks[activeItem.mediaId] ??
       null)
-    : null;
+    : (currentTrack ?? null);
   const track = backendTrack ?? storeTrack;
+
+  console.log("[PlayerScreen]", {
+    activeItem: activeItem?.mediaId,
+    isPlaying,
+    storeTrack: storeTrack?.id,
+    track: track?.id,
+  });
 
   useEffect(() => {
     let mounted = true;
@@ -451,7 +459,10 @@ export default function PlayerScreen() {
 
         <View className="flex-row items-center justify-center px-8 gap-9 mb-7">
           <TouchableOpacity
-            onPress={() => TrackPlayer.skipToPrevious()}
+            onPress={() => {
+              const { skipToPrevious } = usePlayerStore.getState();
+              void skipToPrevious();
+            }}
             disabled={!hasPrev}
             activeOpacity={0.7}
             className="w-14 h-14 items-center justify-center"
@@ -465,9 +476,10 @@ export default function PlayerScreen() {
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() =>
-              isPlaying ? TrackPlayer.pause() : TrackPlayer.play()
-            }
+            onPress={() => {
+              const { togglePlay } = usePlayerStore.getState();
+              void togglePlay();
+            }}
             activeOpacity={0.85}
             className="bg-accent rounded-full items-center justify-center shadow-xl"
             style={{ width: 78, height: 78 }}
@@ -481,7 +493,10 @@ export default function PlayerScreen() {
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() => TrackPlayer.skipToNext()}
+            onPress={() => {
+              const { skipToNext } = usePlayerStore.getState();
+              void skipToNext();
+            }}
             disabled={!hasNext}
             activeOpacity={0.7}
             className="w-14 h-14 items-center justify-center"

@@ -21,6 +21,16 @@ export function getPlaybackUrl(trackId: string): string {
   return `${BASE_URL}/api/stream/${encodeURIComponent(trackId)}`;
 }
 
+/**
+ * Build a backend HLS (HTTP Live Streaming) playlist URL for audio.
+ *
+ * HLS provides better streaming compatibility, adaptive bitrate,
+ * and works reliably on mobile networks.
+ */
+export function getHlsPlaybackUrl(trackId: string): string {
+  return `${BASE_URL}/api/hls/${encodeURIComponent(trackId)}/playlist.m3u8`;
+}
+
 async function get<T>(path: string): Promise<T> {
   const res = await fetch(`${BASE_URL}${path}`);
   if (!res.ok) {

@@ -5,6 +5,7 @@ import { artistsRouter } from "./routes/artists.routes.ts";
 import { feedRouter } from "./routes/feed.routes.ts";
 import { tracksRouter } from "./routes/tracks.routes.ts";
 import { streamRouter } from "./routes/stream.routes.ts";
+import { hlsRouter } from "./routes/hls.routes.ts";
 import { errorHandler } from "./middleware/errorHandler.ts";
 
 const app = express();
@@ -20,6 +21,7 @@ app.use("/api/feed", feedRouter);
 app.use("/api/tracks", tracksRouter);
 app.use("/api/artists", artistsRouter);
 app.use("/api/stream", streamRouter);
+app.use("/api/hls", hlsRouter);
 
 app.use((_req, res) => {
   res.status(404).json({ error: "Route not found" });

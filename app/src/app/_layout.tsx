@@ -6,35 +6,16 @@ import { HeroUINativeProvider } from "heroui-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaListener } from "react-native-safe-area-context";
 import { Uniwind } from "uniwind";
-import { useEffect } from "react";
-import TrackPlayer, { PlayerCommand } from "@rntp/player";
+import { useEffect, useRef } from "react";
+import TrackPlayer, { Event, PlayerCommand } from "@rntp/player";
 
 SplashScreen.preventAutoHideAsync();
-
-// ─── RNTP bootstrap ────────────────────────────────────────────────────────────
-// setupPlayer() is synchronous in v5. Called at module level so it runs once
-// before any component mounts. Background events are handled natively by default.
-try {
-  TrackPlayer.setupPlayer({ contentType: "music" });
-
-  // Expose play/pause, prev/next, seek on the lock screen & notification.
-  // PlayerCommand values: PlayPause | Next | Previous | Seek | Stop | SkipForward | SkipBackward
-  TrackPlayer.setCommands({
-    capabilities: [
-      PlayerCommand.PlayPause,
-      PlayerCommand.Next,
-      PlayerCommand.Previous,
-      PlayerCommand.Seek,
-      PlayerCommand.Stop,
-    ],
-  });
-} catch {
-  // Player already set up (fast-refresh / hot-reload) — safe to ignore
-}
 
 // ─── Root layout ───────────────────────────────────────────────────────────────
 
 export default function RootLayout() {
+  const playerSetupDoneRef = useRef(false);
+
   const [loaded, error] = useFonts({
     "OpenSans-Light": require("../../assets/fonts/Open_Sans/OpenSans-Light.ttf"),
     "OpenSans-Regular": require("../../assets/fonts/Open_Sans/OpenSans-Regular.ttf"),
@@ -49,6 +30,60 @@ export default function RootLayout() {
       SplashScreen.hideAsync();
     }
   }, [loaded, error]);
+
+  useEffect(() => {
+    if (playerSetupDoneRef.current) return;
+
+    try {
+      TrackPlayer.setupPlayer({ contentType: "music" });
+      console.log("[RNTP] setupPlayer success");
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : String(err);
+      // Expected on Fast Refresh / remount when already initialized.
+      if (!message.toLowerCase().includes("already set up")) {
+        console.error("[RNTP] setupPlayer failed:", message);
+      }
+    }
+
+    try {
+      TrackPlayer.setCommands({
+        capabilities: [
+          PlayerCommand.PlayPause,
+          PlayerCommand.Next,
+          PlayerCommand.Previous,
+          PlayerCommand.Seek,
+          PlayerCommand.Stop,
+        ],
+      });
+      console.log("[RNTP] commands configured");
+    } catch (err: unknown) {
+      console.error(
+        "[RNTP] setCommands failed:",
+        err instanceof Error ? err.message : String(err),
+      );
+    }
+
+    playerSetupDoneRef.current = true;
+
+    const playbackErrorSub = TrackPlayer.addEventListener(
+      Event.PlaybackError,
+      (event) => {
+        console.error("[RNTP] PlaybackError:", event.code, event.message);
+      },
+    );
+
+    const playbackStateSub = TrackPlayer.addEventListener(
+      Event.PlaybackStateChanged,
+      (event) => {
+        console.log("[RNTP] PlaybackState:", event.state);
+      },
+    );
+
+    return () => {
+      playbackErrorSub.remove();
+      playbackStateSub.remove();
+    };
+  }, []);
 
   if (!loaded && !error) return null;
 
