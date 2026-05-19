@@ -83,6 +83,20 @@ This will start the Expo development server and launch the app in the selected e
 
 ---
 
+## Diagrams
+
+### Audio Streaming Methods
+
+![Audio Streaming Methods](./audio_streaming_methods.svg)
+
+### HLS Streaming Workflow
+
+![HLS Streaming Workflow](./hls_audio_streaming.svg)
+
+### Client - Server Workflow
+
+![Client Server Workflow](./hls_workflow_diagram.svg)
+
 ## Approach and Project Structure
 
 ### Backend
