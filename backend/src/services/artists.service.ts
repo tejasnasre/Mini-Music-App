@@ -4,8 +4,12 @@ import {
 } from "../schemas/artist.schema.js";
 import type { Track } from "../schemas/track.schema.js";
 import { getAllTracks } from "./tracks.service.js";
+import fs from "node:fs";
+import path from "node:path";
 
-const raw = await Bun.file(import.meta.dir + "/../data/artists.json").json();
+const raw = JSON.parse(
+  fs.readFileSync(path.join(import.meta.dir, "/../data/artists.json"), "utf-8"),
+);
 const db = ArtistsDbSchema.parse(raw);
 
 function normalize(value: string): string {
