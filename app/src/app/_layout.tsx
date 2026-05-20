@@ -32,35 +32,7 @@ export default function RootLayout() {
   useEffect(() => {
     if (playerSetupDoneRef.current) return;
 
-    try {
-      TrackPlayer.setupPlayer({ contentType: "music" });
-      console.log("[RNTP] setupPlayer success");
-    } catch (err: unknown) {
-      const message = err instanceof Error ? err.message : String(err);
-      // Expected on Fast Refresh / remount when already initialized.
-      if (!message.toLowerCase().includes("already set up")) {
-        console.error("[RNTP] setupPlayer failed:", message);
-      }
-    }
-
-    try {
-      TrackPlayer.setCommands({
-        capabilities: [
-          PlayerCommand.PlayPause,
-          PlayerCommand.Next,
-          PlayerCommand.Previous,
-          PlayerCommand.Seek,
-          PlayerCommand.Stop,
-        ],
-      });
-      console.log("[RNTP] commands configured");
-    } catch (err: unknown) {
-      console.error(
-        "[RNTP] setCommands failed:",
-        err instanceof Error ? err.message : String(err),
-      );
-    }
-
+    // Mark early so Fast Refresh remounts don't double-init
     playerSetupDoneRef.current = true;
 
     const playbackErrorSub = TrackPlayer.addEventListener(
@@ -76,6 +48,43 @@ export default function RootLayout() {
         console.log("[RNTP] PlaybackState:", event.state);
       },
     );
+
+    // setupPlayer is async — must be awaited before calling setCommands.
+    // Without await, setCommands (and any subsequent play calls) race against
+    // an uninitialised player, which silently breaks HLS playback.
+    const setup = async () => {
+      try {
+        await TrackPlayer.setupPlayer({ contentType: "music" });
+        console.log("[RNTP] setupPlayer success");
+      } catch (err: unknown) {
+        const message = err instanceof Error ? err.message : String(err);
+        // Expected on Fast Refresh / remount when already initialized.
+        if (!message.toLowerCase().includes("already set up")) {
+          console.error("[RNTP] setupPlayer failed:", message);
+          return; // Don't call setCommands if setup genuinely failed
+        }
+      }
+
+      try {
+        TrackPlayer.setCommands({
+          capabilities: [
+            PlayerCommand.PlayPause,
+            PlayerCommand.Next,
+            PlayerCommand.Previous,
+            PlayerCommand.Seek,
+            PlayerCommand.Stop,
+          ],
+        });
+        console.log("[RNTP] commands configured");
+      } catch (err: unknown) {
+        console.error(
+          "[RNTP] setCommands failed:",
+          err instanceof Error ? err.message : String(err),
+        );
+      }
+    };
+
+    void setup();
 
     return () => {
       playbackErrorSub.remove();

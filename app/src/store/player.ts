@@ -1,15 +1,22 @@
 import { create } from "zustand";
 import TrackPlayer from "@rntp/player";
 import type { Track } from "@/types/track";
-import { getHlsPlaybackUrl } from "@/lib/api";
+// getHlsPlaybackUrl removed — we now use track.audio.hls_url directly
 
 /** Convert our Track → RNTP MediaItem shape with HLS streaming */
 export function toMediaItem(track: Track) {
+  // Prefer the HLS URL returned by the API; fall back to the direct stream URL.
+  // Never construct a speculative HLS URL — if the API says hls_url is null,
+  // the backend does not serve HLS for this track.
+  const hlsUrl = track.audio.hls_url;
+  const streamUrl = track.audio.stream_url;
+  const url = hlsUrl ?? streamUrl;
+  const isHls = Boolean(hlsUrl);
+
   return {
     mediaId: track.id,
-    url: getHlsPlaybackUrl(track.id),
-    type: "hls",
-    // mimeType: "application/x-mpegURL",
+    url,
+    ...(isHls && { type: "hls", mimeType: "application/x-mpegURL" }),
     title: track.title,
     artist: track.artists.map((a) => a.name).join(", "),
     albumTitle: track.album,
@@ -69,6 +76,14 @@ export const usePlayerStore = create<PlayerStore>()((set, get) => ({
       list.length,
     );
 
+    // Surface HLS vs stream fallback decision for each queued item
+    list.forEach((t) => {
+      const hlsUrl = t.audio.hls_url;
+      console.log(
+        `[Player] ${t.id}: ${hlsUrl ? `HLS → ${hlsUrl}` : `stream → ${t.audio.stream_url}`}`,
+      );
+    });
+
     set({ trackMap: map, queue: list, currentTrack: track });
 
     // Tell RNTP about the new queue and start playback
@@ -79,22 +94,12 @@ export const usePlayerStore = create<PlayerStore>()((set, get) => ({
     );
 
     try {
-      // setMediaItems is synchronous
+      // setMediaItems clears the queue, loads all items, and sets the active
+      // item to startIndex in a single native call. Do NOT call skipToIndex
+      // afterwards — it races with setMediaItems on the native thread and can
+      // leave the queue in an empty/undefined state (seen as queue length 0).
       TrackPlayer.setMediaItems(mediaItems, startIndex);
-      console.log("[Player] setMediaItems called");
-
-      // Explicitly set active index so useActiveMediaItem has a concrete item.
-      await TrackPlayer.skipToIndex(startIndex);
-      console.log("[Player] skipToIndex:", startIndex);
-
-      const activeAfterSet = TrackPlayer.getActiveMediaItem();
-      const queueAfterSet = TrackPlayer.getQueue();
-      console.log(
-        "[Player] queue length after set:",
-        queueAfterSet.length,
-        "active:",
-        activeAfterSet?.mediaId,
-      );
+      console.log("[Player] setMediaItems called, startIndex:", startIndex);
 
       await TrackPlayer.play();
       console.log("[Player] Play command sent");
