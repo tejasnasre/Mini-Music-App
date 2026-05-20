@@ -102,30 +102,27 @@ To create a standalone build of the application for distribution, we use [Expo A
 2.  **Log in to your Expo account:**
 
     ```bash
-
-    ```
-
     eas login
-
-````
+    ```
 
 3.  **Configure the build:**
-  The `eas.json` file in the `app` directory is pre-configured for different build profiles.
+    The `eas.json` file in the `app` directory is pre-configured for different build profiles.
 
 4.  **Start the build:**
-  You can build for Android or iOS using the following commands from the `app` directory:
-  - **Android (APK):**
+    You can build for Android or iOS using the following commands from the `app` directory:
 
-    ```bash
-    cd app
-    eas build --profile preview --platform android
-    ```
+- **Android (APK):**
 
-  - **iOS:**
-    ```bash
-    cd app
-    eas build --profile preview --platform ios
-    ```
+  ```bash
+  cd app
+  eas build --profile preview --platform android
+  ```
+
+- **iOS:**
+  ```bash
+  cd app
+  eas build --profile preview --platform ios
+  ```
 
 ---
 
@@ -133,22 +130,17 @@ To create a standalone build of the application for distribution, we use [Expo A
 
 ### Audio Streaming Methods
 
-![Audio Streaming Methods](./audio_streaming_methods.svg)
+![Audio Streaming Methods](audio_streaming_methods.svg)
 
 ### HLS Streaming Workflow
 
-![HLS Streaming Workflow](./hls_audio_streaming.svg)
+![HLS Streaming Workflow](hls_audio_streaming.svg)
 
 ### Client - Server Workflow
 
-![Client Server Workflow](./hls_workflow_diagram.svg)
+![Client Server Workflow](hls_workflow_diagram.svg)
 
 ## Approach and Project Structure
-
-## References
-
-- [HLS Audio Streaming in Node.js](https://medium.com/@sandipbasnet/hls-audio-streaming-in-node-js-f89501c86a21)
-- [Broadcasting and Streaming Live Audio Using Node.js, FFmpeg, React, and React Native](https://medium.com/@mustneerahmadr7/broadcasting-and-streaming-live-audio-using-node-js-ffmpeg-react-and-react-native-09604f0937f0)
 
 ### Backend
 
@@ -183,20 +175,28 @@ The `app` is a React Native mobile application built with Expo and Expo Router f
 
 Based on the project's evolution, here are some of the key technical decisions and the tradeoffs involved:
 
-1.  **Streaming Architecture: HTTP Range Requests → HLS**
-  - **Initial Approach**: The backend first implemented streaming using HTTP `Range` requests. This is a straightforward method for serving media, allowing the client to request parts of a file.
-  - **Final Approach**: The architecture was later migrated to **HLS (HTTP Live Streaming)**.
-  - **Tradeoff**: HLS is more complex, requiring a one-time `ffmpeg` process to segment audio files into `.ts` chunks and create `.m3u8` playlists. However, it offers significant advantages for a music app, including **adaptive bitrate streaming** (which adjusts quality based on network conditions), better client-side caching, and improved reliability on mobile networks. The current implementation simplifies the backend by pre-generating these files, making the server's job to just serve static content.
+### Streaming Architecture: HTTP Range Requests → HLS
 
-2.  **Data Storage: JSON Files vs. Database**
-  - **Decision**: The backend uses static JSON files (`artists.json`, `tracks.json`) located in the `src/data` directory to store metadata.
-  - **Tradeoff**: This approach is simple, has zero setup cost, and is perfectly adequate for a small, fixed dataset, making the project easy to run locally. The tradeoff is a lack of scalability and dynamic content management. A full-fledged database (like PostgreSQL or MongoDB) would be necessary to handle a larger library of music, user data, and dynamic updates.
+- **Initial Approach**: The backend first implemented streaming using HTTP `Range` requests. This is a straightforward method for serving media, allowing the client to request parts of a file.
+- **Final Approach**: The architecture was later migrated to **HLS (HTTP Live Streaming)**.
+- **Tradeoff**: HLS is more complex, requiring a one-time `ffmpeg` process to segment audio files into `.ts` chunks and create `.m3u8` playlists. However, it offers significant advantages for a music app, including **adaptive bitrate streaming** (which adjusts quality based on network conditions), better client-side caching, and improved reliability on mobile networks. The current implementation simplifies the backend by pre-generating these files, making the server's job to just serve static content.
 
-3.  **UI Component Library: HeroUI with Uniwind**
-  - **Decision**: The frontend uses `heroui-native`, a component library that leverages `uniwind` to enable Tailwind CSS-like styling in React Native.
-  - **Tradeoff**: This provides a rapid development experience with a consistent, utility-first styling system. It avoids the need to write custom stylesheet objects for every component. The tradeoff is a dependency on a specific styling paradigm and library, and a potential learning curve for those unfamiliar with Tailwind CSS.
+### Data Storage: JSON Files vs. Database
 
-4.  **State Management: Zustand and Local Persistence**
-  - **Decision**: Global state for features like the music player and favorites is managed with Zustand. For persistence (e.g., saving favorite tracks), the app uses local storage (likely via `react-native-mmkv`).
-  - **Tradeoff**: Zustand offers a simple and powerful way to manage state without the boilerplate of other libraries. Using local storage for persistence is fast and works offline. However, this data is not synced across devices. A complete solution would require a backend service to store user-specific data like favorites.
-````
+- **Decision**: The backend uses static JSON files (`artists.json`, `tracks.json`) located in the `src/data` directory to store metadata.
+- **Tradeoff**: This approach is simple, has zero setup cost, and is perfectly adequate for a small, fixed dataset, making the project easy to run locally. The tradeoff is a lack of scalability and dynamic content management. A full-fledged database (like PostgreSQL or MongoDB) would be necessary to handle a larger library of music, user data, and dynamic updates.
+
+### UI Component Library: HeroUI with Uniwind
+
+- **Decision**: The frontend uses `heroui-native`, a component library that leverages `uniwind` to enable Tailwind CSS-like styling in React Native.
+- **Tradeoff**: This provides a rapid development experience with a consistent, utility-first styling system. It avoids the need to write custom stylesheet objects for every component. The tradeoff is a dependency on a specific styling paradigm and library, and a potential learning curve for those unfamiliar with Tailwind CSS.
+
+### State Management: Zustand and Local Persistence
+
+- **Decision**: Global state for features like the music player and favorites is managed with Zustand. For persistence (e.g., saving favorite tracks), the app uses local storage (likely via `react-native-mmkv`).
+- **Tradeoff**: Zustand offers a simple and powerful way to manage state without the boilerplate of other libraries. Using local storage for persistence is fast and works offline. However, this data is not synced across devices. A complete solution would require a backend service to store user-specific data like favorites.
+
+## References
+
+- [HLS Audio Streaming in Node.js](https://medium.com/@sandipbasnet/hls-audio-streaming-in-node-js-f89501c86a21)
+- [Broadcasting and Streaming Live Audio Using Node.js, FFmpeg, React, and React Native](https://medium.com/@mustneerahmadr7/broadcasting-and-streaming-live-audio-using-node-js-ffmpeg-react-and-react-native-09604f0937f0)
